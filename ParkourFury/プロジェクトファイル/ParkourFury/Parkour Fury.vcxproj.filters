@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Input">
+      <UniqueIdentifier>{fa01c827-ba00-44b0-94d1-f60694bb2721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{da4ad52b-7148-45b2-93c2-72d544dc7636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Manager">
+      <UniqueIdentifier>{8e5e2c5c-cd61-41e1-b3df-0edf64570b66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Manager\ObjectManager">
+      <UniqueIdentifier>{c9f03ba8-ee9b-4305-b52f-7f221d71490e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Input">
+      <UniqueIdentifier>{a7dea9a3-4e3d-4432-9583-edbce074a7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scene">
+      <UniqueIdentifier>{92bf63ed-c1dc-4af4-9915-66c3091198ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object">
+      <UniqueIdentifier>{7cd8a6d9-98ea-42d7-ab55-64d04a9268a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D">
+      <UniqueIdentifier>{bfdf0027-f836-41c0-889c-e20698f61a54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D">
+      <UniqueIdentifier>{bed80622-3d3c-4070-9167-9c1d642e2463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model">
+      <UniqueIdentifier>{e3b26233-78ba-45e9-8134-5c7ba44828ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Polygon">
+      <UniqueIdentifier>{2f3de8fd-fdee-492c-b062-36c74c19a2cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Billboard">
+      <UniqueIdentifier>{1a93c716-ae52-4d46-8ff3-a31dc7f7851f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\Gimmick">
+      <UniqueIdentifier>{21ce95b0-5627-4d5b-a508-09536e561949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Manager">
+      <UniqueIdentifier>{f8c916e2-e904-4e48-8661-6e74e96b807a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Manager\ObjectManager">
+      <UniqueIdentifier>{a7d38f3a-1c3a-4776-b85a-7877c235c8f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\Block">
+      <UniqueIdentifier>{c83627f4-00f9-4aa4-93a3-be77851ca22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\MotionCharacter">
+      <UniqueIdentifier>{a8024e4a-eddd-4eb0-b90b-22811d9e781f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\Enemy">
+      <UniqueIdentifier>{4d0b08f3-ff33-45d9-ba36-f9fdcea9d6cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\Area">
+      <UniqueIdentifier>{96ec9422-feb9-4872-b848-693abe9f03de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\Back">
+      <UniqueIdentifier>{67578379-b485-43e3-a8b2-f59b42e47948}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Event">
+      <UniqueIdentifier>{bd927b21-3ae6-4955-92ab-82c25befacb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI">
+      <UniqueIdentifier>{a9eaa27a-1565-4fff-8258-e6263d103bf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\HeatGage">
+      <UniqueIdentifier>{0d56aff6-842d-4243-872d-11e26cfdc676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\Timer">
+      <UniqueIdentifier>{12c02dc4-4efc-4592-83b7-b1badc9caac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Timer">
+      <UniqueIdentifier>{83d2cea7-a7c8-41b1-873a-f75a0508e9fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Title">
+      <UniqueIdentifier>{c548277f-ddf2-4a93-9645-7e53a6fff64e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Result">
+      <UniqueIdentifier>{13a3d695-1381-4440-93c8-46e6dd69bd9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Result\Head">
+      <UniqueIdentifier>{d0b5c594-399d-40d6-80e8-aa24b629a1c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Result\number">
+      <UniqueIdentifier>{08615af4-676e-4e90-b735-c56b3f46bbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Useful">
+      <UniqueIdentifier>{67c0b756-2dbd-474a-bd0e-bba6105bf0d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Tutorial">
+      <UniqueIdentifier>{4e76ca4c-90e6-418c-8d1c-f8d1f6c6d075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\SignBoard">
+      <UniqueIdentifier>{515d542a-9d45-484c-b0d1-28fef060625a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Useful">
+      <UniqueIdentifier>{877b223e-5bda-44aa-b159-a48217e96445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\MiniGame">
+      <UniqueIdentifier>{da9cca13-d3b4-4c6d-8563-a651fcfec7f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Chase">
+      <UniqueIdentifier>{da4fcb65-01ce-4047-8d44-ae344b2838a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\UI\Boss">
+      <UniqueIdentifier>{b2ff7d99-d7f1-4873-b445-d516c57eb220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Billboard\Effect">
+      <UniqueIdentifier>{ab0ba5cc-e949-4930-8c61-5d75e392f8bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Billboard\Effect\Particle">
+      <UniqueIdentifier>{86aae800-4d5a-4a63-8099-5c7a32a387ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\2D\Effect">
+      <UniqueIdentifier>{ce60b901-88f1-43d0-94fe-daf0b8c4485a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object">
+      <UniqueIdentifier>{3cfb87c1-0a0c-431c-a36f-5c500a4e245e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D">
+      <UniqueIdentifier>{17998a95-38fd-4dd7-bfde-0e723a776b69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI">
+      <UniqueIdentifier>{fb52e20a-ba0e-4971-bc32-ba1a762ae8a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\HeatGage">
+      <UniqueIdentifier>{a2243906-8a68-4ad1-947f-139c3b0895fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Timer">
+      <UniqueIdentifier>{1352ba0c-3f88-44e1-a826-8551b492f73f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Title">
+      <UniqueIdentifier>{90f95e5c-90b7-4840-bd78-4409c8b37436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Result">
+      <UniqueIdentifier>{09c51cbe-90af-4fb9-808e-c13040daa497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Result\Head">
+      <UniqueIdentifier>{227aa521-094d-4525-a135-603726240e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Result\number">
+      <UniqueIdentifier>{62e38432-f31d-4699-a285-dc54fc4c581c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Tutorial">
+      <UniqueIdentifier>{0e199d2a-01f5-4330-96d7-06fd50cbd7ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\MiniGame">
+      <UniqueIdentifier>{10a4fc52-e541-4809-bf77-d6f2ffdae8df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Chase">
+      <UniqueIdentifier>{c0dc4f51-a16a-4acc-be75-cdcf082125f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\UI\Boss">
+      <UniqueIdentifier>{bdb49828-fe20-4d76-b75f-d08ae9d6ccb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\2D\Effect">
+      <UniqueIdentifier>{90116077-b2a4-4400-b280-5791dc309a2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D">
+      <UniqueIdentifier>{ca651d9c-34e8-4c2c-bd27-e64c3b119ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Billboard">
+      <UniqueIdentifier>{19832e85-36f3-41bc-8201-5756fb3954bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Billboard\Effect">
+      <UniqueIdentifier>{8bd47628-a5ef-42f9-927e-42ca76104019}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Billboard\Effect\Particle">
+      <UniqueIdentifier>{7accb745-db50-48a2-9696-1b9297e2c255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model">
+      <UniqueIdentifier>{18473fdc-134a-4a2e-89d1-f42dac2980bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\Gimmick">
+      <UniqueIdentifier>{2f64cca9-6b26-4582-af03-a221580dd4c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\Block">
+      <UniqueIdentifier>{36072a0c-4535-4f19-8fd6-d63420394d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\MotionCharacter">
+      <UniqueIdentifier>{58752cb9-227a-4d9d-86c6-93917413afa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\Enemy">
+      <UniqueIdentifier>{65ea8ff7-513b-4f8b-a1f0-8d874e4cc8da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\Area">
+      <UniqueIdentifier>{29883838-af07-4c32-b710-b2d40bd40b3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\Back">
+      <UniqueIdentifier>{885adc46-7f4b-4251-abbc-0baf74bf2031}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\SignBoard">
+      <UniqueIdentifier>{3c58be6e-e150-4aca-9b1b-f2cf279763b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Polygon">
+      <UniqueIdentifier>{80927b62-e40f-4375-8c84-0d077048813b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Event">
+      <UniqueIdentifier>{2169b8a2-c5ae-4cee-a1a3-241347fe12b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Timer">
+      <UniqueIdentifier>{d35adfe5-f4e0-4c40-884e-1eaf5ac46a54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shader">
+      <UniqueIdentifier>{29a37b0d-dda7-41b5-9077-1085af9e6b9a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="camera.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="xfile.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="bg.cpp">
+      <Filter>ソース ファイル\Object\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="billboard.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard</Filter>
+    </ClCompile>
+    <ClCompile Include="effect3D.cpp">
+      <Filter>ソース ファイル\Object\3D\Polygon</Filter>
+    </ClCompile>
+    <ClCompile Include="fade.cpp">
+      <Filter>ソース ファイル\Object\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="field.cpp">
+      <Filter>ソース ファイル\Object\3D\Polygon</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="joypad.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="mouse.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>ソース ファイル\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="object2D.cpp">
+      <Filter>ソース ファイル\Object\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="object3D.cpp">
+      <Filter>ソース ファイル\Object\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="manager.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="objectmanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="blockmanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="objectX.cpp">
+      <Filter>ソース ファイル\Object\3D\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ranking.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="result.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="title.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="tutorial.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="playerspawner.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="gimmick.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="rotationzone.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="motion.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\MotionCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="slone.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="gimmickmanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="editmanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>ソース ファイル\Object\3D\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletmanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="sky.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Back</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="enemymanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="edit3D.cpp">
+      <Filter>ソース ファイル\Object\3D\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="bossspawner.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="bossarea.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Area</Filter>
+    </ClCompile>
+    <ClCompile Include="areamanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="area.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Area</Filter>
+    </ClCompile>
+    <ClCompile Include="bossmovepoint.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="back_3D.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Back</Filter>
+    </ClCompile>
+    <ClCompile Include="bossattack.cpp">
+      <Filter>ソース ファイル\Object\3D\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="bossblock.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="minigamearea.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Area</Filter>
+    </ClCompile>
+    <ClCompile Include="boss.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\MotionCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="minigame.cpp">
+      <Filter>ソース ファイル\Object\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="chasearea.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Area</Filter>
+    </ClCompile>
+    <ClCompile Include="ball.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ballspawner.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\MotionCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="ballmovepoint.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="heatgage.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\HeatGage</Filter>
+    </ClCompile>
+    <ClCompile Include="heatgageframe.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\HeatGage</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>ソース ファイル\Object\2D\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>ソース ファイル\Object\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="timenumber.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="timerheading.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="mg_timerback.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClCompile>
+    <ClCompile Include="mg_timergage.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClCompile>
+    <ClCompile Include="mg_timerframe.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClCompile>
+    <ClCompile Include="titlelogo.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="startbutton.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="resulthead.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="resultkillhead.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="resulttimehead.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="resultheathead.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="seconds.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="percent.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="edit2D.cpp">
+      <Filter>ソース ファイル\Object\2D\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UImanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="maxscore.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="resulttime.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\number</Filter>
+    </ClCompile>
+    <ClCompile Include="resultkill.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\number</Filter>
+    </ClCompile>
+    <ClCompile Include="resultheat.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\number</Filter>
+    </ClCompile>
+    <ClCompile Include="totalscore.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Result\number</Filter>
+    </ClCompile>
+    <ClCompile Include="normalenemy.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="moveenemy.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletenemy.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>ソース ファイル\Useful</Filter>
+    </ClCompile>
+    <ClCompile Include="tutorialhead.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="descriptheat.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="signboard.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\SignBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="signboardmanager.cpp">
+      <Filter>ソース ファイル\Manager\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="mg_head.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClCompile>
+    <ClCompile Include="escape.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Chase</Filter>
+    </ClCompile>
+    <ClCompile Include="bosshp.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="bosshpframe.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="particle.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="normalparticle.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ascendparticle.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>ソース ファイル\Useful</Filter>
+    </ClCompile>
+    <ClCompile Include="debugproc.cpp">
+      <Filter>ソース ファイル\Useful</Filter>
+    </ClCompile>
+    <ClCompile Include="calculate.cpp">
+      <Filter>ソース ファイル\Useful</Filter>
+    </ClCompile>
+    <ClCompile Include="smoke.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="target.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="billboardeffect.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="effect2D.cpp">
+      <Filter>ソース ファイル\Object\2D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="nice.cpp">
+      <Filter>ソース ファイル\Object\2D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="great.cpp">
+      <Filter>ソース ファイル\Object\2D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="excellent.cpp">
+      <Filter>ソース ファイル\Object\2D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="bad.cpp">
+      <Filter>ソース ファイル\Object\2D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="tag.cpp">
+      <Filter>ソース ファイル\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="descriptgage.cpp">
+      <Filter>ソース ファイル\Object\2D\UI\Tutorial</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="camera.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="sound.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="xfile.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="bg.h">
+      <Filter>ヘッダー ファイル\Object\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="billboard.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard</Filter>
+    </ClInclude>
+    <ClInclude Include="blockmanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="effect3D.h">
+      <Filter>ヘッダー ファイル\Object\3D\Polygon</Filter>
+    </ClInclude>
+    <ClInclude Include="field.h">
+      <Filter>ヘッダー ファイル\Object\3D\Polygon</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="joypad.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboard.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="fade.h">
+      <Filter>ヘッダー ファイル\Object\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="manager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="mouse.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="object2D.h">
+      <Filter>ヘッダー ファイル\Object\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="object3D.h">
+      <Filter>ヘッダー ファイル\Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="objectX.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="objectmanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>ヘッダー ファイル\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="tutorial.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="playerspawner.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="gimmick.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="rotationzone.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="block.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="motion.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\MotionCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="slone.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="gimmickmanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="editmanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletmanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="sky.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Back</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="enemymanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="edit3D.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="tag.h">
+      <Filter>ヘッダー ファイル\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="bossspawner.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="bossarea.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Area</Filter>
+    </ClInclude>
+    <ClInclude Include="areamanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="area.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Area</Filter>
+    </ClInclude>
+    <ClInclude Include="bossmovepoint.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="back_3D.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Back</Filter>
+    </ClInclude>
+    <ClInclude Include="bossattack.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="bossblock.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="minigamearea.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Area</Filter>
+    </ClInclude>
+    <ClInclude Include="minigame.h">
+      <Filter>ヘッダー ファイル\Object\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="boss.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\MotionCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\MotionCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="chasearea.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Area</Filter>
+    </ClInclude>
+    <ClInclude Include="ball.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ballspawner.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="ballmovepoint.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="heatgage.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\HeatGage</Filter>
+    </ClInclude>
+    <ClInclude Include="heatgageframe.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\HeatGage</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>ヘッダー ファイル\Object\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="timenumber.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="timerheading.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="mg_timerback.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClInclude>
+    <ClInclude Include="mg_timergage.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClInclude>
+    <ClInclude Include="mg_timerframe.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClInclude>
+    <ClInclude Include="titlelogo.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="startbutton.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="resulthead.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="resultkillhead.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="resulttimehead.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="resultheathead.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="seconds.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="edit2D.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UImanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="percent.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="maxscore.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="resulttime.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\number</Filter>
+    </ClInclude>
+    <ClInclude Include="resultkill.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\number</Filter>
+    </ClInclude>
+    <ClInclude Include="resultheat.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\number</Filter>
+    </ClInclude>
+    <ClInclude Include="totalscore.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Result\number</Filter>
+    </ClInclude>
+    <ClInclude Include="normalenemy.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="moveenemy.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletenemy.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="tutorialhead.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="descriptheat.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="signboard.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\SignBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>ヘッダー ファイル\Useful</Filter>
+    </ClInclude>
+    <ClInclude Include="signboardmanager.h">
+      <Filter>ヘッダー ファイル\Manager\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="mg_head.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\MiniGame</Filter>
+    </ClInclude>
+    <ClInclude Include="escape.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Chase</Filter>
+    </ClInclude>
+    <ClInclude Include="bosshp.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="bosshpframe.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="particle.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="normalparticle.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="ascendparticle.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>ヘッダー ファイル\Useful</Filter>
+    </ClInclude>
+    <ClInclude Include="debugproc.h">
+      <Filter>ヘッダー ファイル\Useful</Filter>
+    </ClInclude>
+    <ClInclude Include="calculate.h">
+      <Filter>ヘッダー ファイル\Useful</Filter>
+    </ClInclude>
+    <ClInclude Include="smoke.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="target.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="billboardeffect.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="effect2D.h">
+      <Filter>ヘッダー ファイル\Object\2D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="nice.h">
+      <Filter>ヘッダー ファイル\Object\2D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="great.h">
+      <Filter>ヘッダー ファイル\Object\2D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="excellent.h">
+      <Filter>ヘッダー ファイル\Object\2D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="bad.h">
+      <Filter>ヘッダー ファイル\Object\2D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="descriptgage.h">
+      <Filter>ヘッダー ファイル\Object\2D\UI\Tutorial</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="ToonShader.fx">
+      <Filter>ソース ファイル\Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
