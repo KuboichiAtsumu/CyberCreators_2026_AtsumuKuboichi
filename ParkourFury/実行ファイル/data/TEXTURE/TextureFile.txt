@@ -171,25 +171,28 @@ FILE
 data/TEXTURE/UI/ResultMaxScore.png
 
 FILE
-17
+21
 data/TEXTURE/UI/TutorialHead.png
 
 FILE
-18
+22
 data/TEXTURE/UI/DescriptHeat.png
 
 FILE
-19
+23
 data/TEXTURE/UI/MiniGameHead.png
 
 FILE
-20
+24
 data/TEXTURE/UI/escape.png
 
 FILE
-22
+26
 data/TEXTURE/UI/BossHPFrame.png
 
+FILE
+27
+data/TEXTURE/UI/DescriptGage.png
 
 END_FILE
 
