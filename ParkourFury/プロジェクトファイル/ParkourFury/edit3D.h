@@ -28,9 +28,9 @@ public:
 	void Uninit();//終了処理
 	void Release();//解放処理
 	void Update();//更新処理
-	static void EditUpdate();//エディタ情報更新処理
 	void Draw();//描画処理
 	static CEdit3D* Create(CEdit3D aEdit);//生成処理
+	static void EditUpdate();//エディタ情報更新処理
 
 	//前のオブジェクト情報
 	void SetPrevEdit(CEdit3D* pEdit) { m_pPrev = pEdit; }//設定
@@ -74,12 +74,16 @@ private:
 	void Change();//カテゴリー・タイプ変更処理
 
 	//======================================
+	// 定数
+	//======================================
+	const int TURN_DIRECTION = 4;//回転方向分割数
+	const float MOVE = 1.0f;//移動量
+	const float SCALE = 0.1f;//拡大量
+	const float TURN = D3DX_PI * (1.0f / static_cast<float>(TURN_DIRECTION));//回転量
+
+	//======================================
 	// 変数
 	//======================================
-	static constexpr int TURN_DIRECTION = 4;//回転方向分割数
-	static constexpr float MOVE = 5.0f;//移動量
-	static constexpr float SCALE = 0.1f;//拡大量
-	static constexpr float TURN = D3DX_PI * (1.0f / static_cast<float>(TURN_DIRECTION));//回転量
 	static MODE m_mode;//操作モード
 	static int m_nAll;//配置数
 	static int m_nTarget;//編集対象番号

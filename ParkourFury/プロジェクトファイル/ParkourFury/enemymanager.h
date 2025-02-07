@@ -27,7 +27,7 @@ public:
 	HRESULT Init() override;//‰Šú‰»ˆ—
 	void Uninit() override;//I—¹ˆ—
 	void Update() override;//XVˆ—
-	void Draw() override;//•`‰æˆ—
+	void Draw() override {};//•`‰æˆ—
 	void Regist(CEnemy* pEnemy);//“o˜^ˆ—
 	void Load() override;//“Çˆ—
 	bool Collision(CEnemy::CollisionParam& aParam);//“–‚½‚è”»’è

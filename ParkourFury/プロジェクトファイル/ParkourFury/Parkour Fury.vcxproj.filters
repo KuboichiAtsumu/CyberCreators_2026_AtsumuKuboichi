@@ -220,6 +220,9 @@
     <Filter Include="ソース ファイル\Shader">
       <UniqueIdentifier>{29a37b0d-dda7-41b5-9077-1085af9e6b9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="テキストファイル">
+      <UniqueIdentifier>{b789bbf4-3ca2-48a1-8c42-b53f5f7b5487}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp">
@@ -895,5 +898,10 @@
     <FxCompile Include="ToonShader.fx">
       <Filter>ソース ファイル\Shader</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\TEXTURE\TextureFile.txt">
+      <Filter>テキストファイル</Filter>
+    </Text>
   </ItemGroup>
 </Project>

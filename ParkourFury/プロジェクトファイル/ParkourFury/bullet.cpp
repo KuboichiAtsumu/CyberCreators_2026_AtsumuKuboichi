@@ -98,6 +98,52 @@ void CBullet::Update()
 }
 
 //===========================================================================================================
+// 描画処理
+//===========================================================================================================
+void CBullet::Draw()
+{
+	//基底クラス描画処理
+	CObjectX::Draw();
+}
+
+//===========================================================================================================
+// 生成処理
+//===========================================================================================================
+CBullet* CBullet::Create(const D3DXVECTOR3& pos, const D3DXVECTOR3& move, const D3DXVECTOR3& rot, TYPE m_type)
+{
+	//タイプに応じてメモリを動的確保
+	CBullet* pBullet = NEW CBullet(static_cast<int>(CObject::Category::BULLET));
+	switch (m_type)
+	{
+		//プレイヤー
+	case TYPE::PLAYER:
+		break;
+
+	default:
+		break;
+	}
+
+	//バレット情報が存在する場合
+	if (pBullet != nullptr)
+	{
+		//パラメータ設定
+		pBullet->SetPos(pos);//座標
+		pBullet->SetMove(move);//移動量
+		pBullet->SetRot(rot);//角度
+		pBullet->SetBulletType(m_type);//タイプ
+		pBullet->SetLife(30);
+
+		//初期化処理
+		pBullet->Init();
+
+		//マネージャー登録
+		CManager::GetInstance()->GetScene()->GetBulletManager()->Regist(pBullet);
+	}
+
+	return pBullet;
+}
+
+//===========================================================================================================
 // エネミーとの当たり判定
 //===========================================================================================================
 void CBullet::CollisionEnemy()
@@ -110,7 +156,7 @@ void CBullet::CollisionEnemy()
 
 	//エネミーとの当たり判定がfalseの場合
 	if (!CManager::GetInstance()->GetScene()->GetEnemyManager()->Collision(aParam)) return;
-	
+
 	//終了処理
 	Uninit();
 
@@ -184,6 +230,10 @@ void CBullet::CollisionBoss()
 //===========================================================================================================
 void CBullet::CollisionBlock()
 {
+	//インスタンス取得
+	CManager* pManager = CManager::GetInstance();//マネージャー
+	CBlockManager* pBlockManager = pManager->GetScene()->GetBlockManager();//ブロックマネージャー
+
 	//当たり判定用パラメータ設定
 	CBlock::CollisionParam aParam;
 	aParam.pos = GetPos();//座標
@@ -194,8 +244,8 @@ void CBullet::CollisionBlock()
 	aParam.type = CBlock::TYPE::NONE;//当たったブロックのタイプ
 
 	//上側の判定を取得
-	CBlock::CollisionFlag aFlag = CManager::GetInstance()->GetScene()->GetBlockManager()->Collision(aParam);
-	
+	CBlock::CollisionFlag aFlag = pBlockManager->Collision(aParam);
+
 	//いずれかの当たり判定がtrue
 	if (aFlag.X || aFlag.Y_UP || aFlag.Y_DOWN || aFlag.Z)
 	{
@@ -208,50 +258,4 @@ void CBullet::CollisionBlock()
 			CParticle::Create(CParticle::TYPE::NORMAL, aParam.pos, { 15.0f, 15.0f, 0.0f }, 10, { 1.0f, 1.0f, 0.0f, 1.0f });
 		}
 	}
-}
-
-//===========================================================================================================
-// 描画処理
-//===========================================================================================================
-void CBullet::Draw()
-{
-	//基底クラス描画処理
-	CObjectX::Draw();
-}
-
-//===========================================================================================================
-// 生成処理
-//===========================================================================================================
-CBullet* CBullet::Create(const D3DXVECTOR3& pos, const D3DXVECTOR3& move, const D3DXVECTOR3& rot, TYPE m_type)
-{
-	//タイプに応じてメモリを動的確保
-	CBullet* pBullet = NEW CBullet(static_cast<int>(CObject::Category::BULLET));
-	switch (m_type)
-	{
-		//プレイヤー
-	case TYPE::PLAYER:
-		break;
-
-	default:
-		break;
-	}
-
-	//バレット情報が存在する場合
-	if (pBullet != nullptr)
-	{
-		//パラメータ設定
-		pBullet->SetPos(pos);//座標
-		pBullet->SetMove(move);//移動量
-		pBullet->SetRot(rot);//角度
-		pBullet->SetBulletType(m_type);//タイプ
-		pBullet->SetLife(30);
-
-		//初期化処理
-		pBullet->Init();
-
-		//マネージャー登録
-		CManager::GetInstance()->GetScene()->GetBulletManager()->Regist(pBullet);
-	}
-
-	return pBullet;
 }

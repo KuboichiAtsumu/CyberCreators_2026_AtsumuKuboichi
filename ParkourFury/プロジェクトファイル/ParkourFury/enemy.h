@@ -60,7 +60,7 @@ public:
 
 	//前のオブジェクト情報
 	void SetPrevEnemy(CEnemy* pEnemy) { m_pPrev = pEnemy; }//設定
-	CEnemy* GetPrevEnemy() { return m_pPrev; }//決定
+	CEnemy* GetPrevEnemy() { return m_pPrev; }//取得
 
 	//次のオブジェクト情報
 	void SetNextEnemy(CEnemy* pEnemy) { m_pNext = pEnemy; }//設定

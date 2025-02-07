@@ -49,12 +49,15 @@ HRESULT CBlock::Init()
 	ID3DXEffect* pEffect = GetEffect();
 	if (FAILED(D3DXCreateEffectFromFile(pDevice, "ToonShader.fx", nullptr, nullptr, D3DXSHADER_DEBUG, nullptr, &pEffect, nullptr)))
 	{
-		MessageBox(0, "シェーダーの読み込みに失敗しました！", "エラー", MB_OK);
+		return E_FAIL;
 	}
 	SetEffect(pEffect);
 
 	//基底クラス初期化処理
-	if (FAILED(CObjectX::Init())) return E_FAIL;
+	if (FAILED(CObjectX::Init()))
+	{
+		return E_FAIL;
+	}
 
 	return S_OK;
 }

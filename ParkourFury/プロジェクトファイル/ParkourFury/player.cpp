@@ -46,7 +46,8 @@ CPlayer::CPlayer(int nPriority) : CMotionCharacter(nPriority),
 	m_fWallKickTurn(0.0f),
 	m_fTargetRot_Y(0.0f),
 	m_bShooting(false),
-	m_bBossCreate(false)
+	m_bBossCreate(false),
+	m_bCollisionBlock(false)
 {
 }
 
@@ -132,16 +133,41 @@ void CPlayer::Update()
 
 	//デバッグ用処理
 #ifdef _DEBUG
-
-	CCamera* pCamera = CManager::GetInstance()->GetCamera();
-
-	PrintDebugProc("%f\n", GetRot().y);
-
-	PrintDebugProc("%f\n", pCamera->GetRot().y);
-
 	//ワープ処理
 	Warp();
 #endif
+}
+
+//===========================================================================================================
+// 描画処理
+//===========================================================================================================
+void CPlayer::Draw()
+{
+	//モーションキャラクター描画処理
+	CMotionCharacter::Draw();
+}
+
+//===========================================================================================================
+// 生成処理
+//===========================================================================================================
+CPlayer* CPlayer::Create(const D3DXVECTOR3& pos)
+{
+	//メモリを動的確保
+	CPlayer* pPlayer = NEW CPlayer(static_cast<int>(Category::PLAYER));
+
+	//プレイヤーの情報が存在する場合
+	if (pPlayer != nullptr)
+	{
+		//パラメータ設定
+		pPlayer->SetPos(pos);//生成座標設定
+		pPlayer->SetOldPos(pos);//過去の座標
+		pPlayer->SetCharacterType(TYPE::PLAYER);//キャラクタータイプ
+
+		//初期化処理
+		pPlayer->Init();
+	}
+
+	return pPlayer;
 }
 
 //===========================================================================================================
@@ -168,8 +194,7 @@ void CPlayer::SetMotionState(int nState)
 	CMotionCharacter::SetMotionState(nState);
 
 	//移動状態ではない場合
-	if (nState != static_cast<int>(STATE::LANDING_MOVE) &&
-		nState != static_cast<int>(STATE::SLIDING))
+	if (nState != static_cast<int>(STATE::LANDING_MOVE))
 	{
 		//状態のインデックスを保存
 		int nIdxState = static_cast<int>(STATE::LANDING_MOVE);
@@ -190,8 +215,8 @@ void CPlayer::SetMotionState(int nState)
 			aMotion.nCntKeySet++;
 
 			//キー数が最大数になった場合
-			if (aMotion.nCntKeySet == aMotion.nMaxKeySet + 1
-				&& static_cast<bool>(aMotion.nLoop))
+			if (aMotion.nCntKeySet == aMotion.nMaxKeySet + 1 &&
+				static_cast<bool>(aMotion.nLoop))
 			{//ループする場合
 
 				//キーセット数を初期化
@@ -225,59 +250,28 @@ void CPlayer::SetPartsState()
 		ModelParts aParts = GetPartsInfo(nCntParts);
 
 		//下半身パーツの場合
-		if (aParts.Half == HALF_BODY::DOWN_BODY && 
-			CObject::MovingJudgeXZ(GetMove()) && 
-			GetLandingFlag() && 
-			m_State != STATE::DASH && 
-			m_State != STATE::DAMAGE && 
+		if (aParts.Half == HALF_BODY::DOWN_BODY &&
+			CObject::MovingJudgeXZ(GetMove()) &&
+			GetLandingFlag() &&
+			m_State != STATE::DASH &&
+			m_State != STATE::DAMAGE &&
 			m_State != STATE::SLIDING)
 		{
 			//移動状態に設定
 			nState = static_cast<int>(STATE::LANDING_MOVE);
 		}
 		//上半身パーツで射撃中
-		else if(aParts.Half == HALF_BODY::UP_BODY && m_bShooting &&
-			m_State != STATE::WALL_SLIDE)
+		else if (aParts.Half == HALF_BODY::UP_BODY && 
+			m_State != STATE::WALL_SLIDE &&
+			m_bShooting)
 		{
 			//射撃状態に設定
 			nState = static_cast<int>(STATE::SHOT);
 		}
-	
+
 		//モーション処理
 		Motion(nState, nCntParts);
 	}
-}
-
-//===========================================================================================================
-// 描画処理
-//===========================================================================================================
-void CPlayer::Draw()
-{
-	//モーションキャラクター描画処理
-	CMotionCharacter::Draw();
-}
-
-//===========================================================================================================
-// 生成処理
-//===========================================================================================================
-CPlayer* CPlayer::Create(const D3DXVECTOR3& pos)
-{
-	//メモリを動的確保
-	CPlayer* pPlayer = NEW CPlayer(static_cast<int>(Category::PLAYER));
-
-	//プレイヤーの情報が存在する場合
-	if (pPlayer != nullptr)
-	{
-		//パラメータ設定
-		pPlayer->SetPos(pos);//生成座標設定
-		pPlayer->SetOldPos(pos);//過去の座標
-		pPlayer->SetCharacterType(TYPE::PLAYER);//キャラクタータイプ
-
-		//初期化処理
-		pPlayer->Init();
-	}
-
-	return pPlayer;
 }
 
 //===========================================================================================================
@@ -560,6 +554,8 @@ void CPlayer::Dash(float& fDiaSpeed, float& fFirstDiaSpeed)
 			//ダッシュのフレームカウンタを設定
 			m_nCntDash = DASH_FRAME;
 
+
+
 			//テンション量増加
 			IncreaseHeat(10.0f);
 
@@ -583,57 +579,65 @@ void CPlayer::Shot()
 		//処理をしない
 		return;
 	}
-	//壁キック回転中
-	if (m_State == STATE::WALL_KICK &&
-		GetMotionFlag())
+	//壁キック中
+	if (m_State == STATE::WALL_KICK && GetMotionFlag())
 	{
 		//処理をしない
 		return;
 	}
 
-	//マネージャーのインスタンス取得
-	CManager* pManager = CManager::GetInstance();
+	//インスタンス取得
+	CManager* pManager = CManager::GetInstance();//マネージャー
+	CInputKeyboard* pKeyboard = pManager->GetKeyboard();//キーボード
+	CInputJoypad* pJoypad = pManager->GetJoypad();//ジョイパッド
 
-	//等間隔で弾を発射
-	if (pManager->GetKeyboard()->GetPress(DIK_F) ||
-		pManager->GetJoypad()->GetPress(CInputJoypad::JOYKEY::JOYKEY_B))
+	//発射ボタンの入力判定がtrue
+	if (pKeyboard->GetPress(DIK_F) || pJoypad->GetPress(CInputJoypad::JOYKEY::JOYKEY_B))
 	{
-		//パーツインデックスを保存
-		int nParts = static_cast<int>(PARTS::HandL);
+		//ローカル変数宣言
+		D3DXVECTOR3 BulletPos(0.0f, 0.0f, 0.0f);//発射地点
+		ModelParts aParts = {};//パーツ情報保存用
+		int nParts = 0;//パーツインデックス保存用
 
-		//左手パーツ情報を取得
-		ModelParts aParts = GetPartsInfo(nParts);
+		//発射地点のX軸,Z軸を左手に設定
+		nParts = static_cast<int>(PARTS::HandL);
+		aParts = GetPartsInfo(nParts);
+		BulletPos.x = aParts.WorldPos.x;
+		BulletPos.z = aParts.WorldPos.z;
+
+		//発射地点のY軸を上腕部分に設定
+		nParts = static_cast<int>(PARTS::ArmUL);
+		aParts = GetPartsInfo(nParts);
+		BulletPos.y = aParts.WorldPos.y;
 
 		//プレイヤーの情報を取得
-		D3DXVECTOR3 PlayerPos = GetPos();//座標
 		D3DXVECTOR3 rot = GetRot();//角度
 
-		//弾の生成情報保存用
-		D3DXVECTOR3 BulletPos(aParts.WorldPos.x, aParts.WorldPos.y, aParts.WorldPos.z);//座標
-		D3DXVECTOR3 BulletMove(-sinf(rot.y) * BULLET_SPEED, 0.0f, -cosf(rot.y) * BULLET_SPEED);//移動量
+		//弾の移動量設定
+		D3DXVECTOR3 BulletMove(-sinf(rot.y) * BULLET_SPEED, 0.0f, -cosf(rot.y) * BULLET_SPEED);
 
 		//等間隔で弾を発射
-		if (pManager->GetKeyboard()->GetRepeat(DIK_F, SHOT_SPEED) ||
-			pManager->GetJoypad()->GetRepeat(CInputJoypad::JOYKEY::JOYKEY_B, SHOT_SPEED))
+		if ((pKeyboard->GetRepeat(DIK_F, SHOT_SPEED) || pJoypad->GetRepeat(CInputJoypad::JOYKEY::JOYKEY_B, SHOT_SPEED)) &&
+			!ShotPointCollisionBlock(BulletPos))//発射地点とブロックの当たり判定がfalse
 		{
 			//弾を生成
 			CBullet::Create(BulletPos, BulletMove, rot, CBullet::TYPE::PLAYER);
 
 			//発射音再生
 			pManager->GetSound()->Play(CSound::SOUND::SHOT);
-		}
 
-		//射撃フラグをtrueにする
-		m_bShooting = true;
+			//射撃フラグをtrueにする
+			m_bShooting = true;
 
-		//スライディング状態ではない場合
-		if (m_State != STATE::SLIDING)
-		{
-			//発射状態にする
-			m_State = STATE::SHOT;
+			//スライディング状態ではない場合
+			if (m_State != STATE::SLIDING)
+			{
+				//発射状態にする
+				m_State = STATE::SHOT;
 
-			//減衰強度リセット
-			m_fInertia = BASE_INERTIA;
+				//減衰強度リセット
+				m_fInertia = BASE_INERTIA;
+			}
 		}
 	}
 	//入力されていない場合
@@ -704,8 +708,8 @@ void CPlayer::Sliding(D3DXVECTOR3& move)
 	}
 
 	//地上で下入力されている場合
-	if ((CManager::GetInstance()->GetKeyboard()->GetTrigger(DIK_S) || 
-		CManager::GetInstance()->GetJoypad()->GetTrigger(CInputJoypad::JOYKEY::JOYKEY_DOWN)) && 
+	if ((pManager->GetKeyboard()->GetTrigger(DIK_S) ||
+		pManager->GetJoypad()->GetTrigger(CInputJoypad::JOYKEY::JOYKEY_DOWN)) &&
 		GetLandingFlag() && 
 		m_State != STATE::SLIDING)
 	{
@@ -729,6 +733,9 @@ void CPlayer::Sliding(D3DXVECTOR3& move)
 //===========================================================================================================
 void CPlayer::Landing(CBlock::CollisionParam& aParam)
 {
+	//インスタンス取得
+	CManager* pManager = CManager::GetInstance();//マネージャー
+
 	//ジャンプ回数リセット
 	m_nCntJump = JUMP_TIMES;
 
@@ -746,6 +753,7 @@ void CPlayer::Landing(CBlock::CollisionParam& aParam)
 		//ニュートラル状態に設定
 		m_State = STATE::NEUTRAL;
 	}
+
 	//動いている場合
 	else if (CObject::MovingJudgeXZ(aParam.move) && 
 		m_State != STATE::SHOT && 
@@ -755,6 +763,7 @@ void CPlayer::Landing(CBlock::CollisionParam& aParam)
 		//ニュートラル状態に設定
 		m_State = STATE::LANDING_MOVE;
 	}
+
 	//スライディング中の場合
 	else if (m_State == STATE::SLIDING)
 	{
@@ -763,8 +772,8 @@ void CPlayer::Landing(CBlock::CollisionParam& aParam)
 
 		//坂道の場合
 		if (aParam.type == CBlock::TYPE::SLONE && 
-			(CManager::GetInstance()->GetKeyboard()->GetPress(DIK_S) || 
-				CManager::GetInstance()->GetJoypad()->GetPress(CInputJoypad::JOYKEY::JOYKEY_DOWN)))
+			(pManager->GetKeyboard()->GetPress(DIK_S) ||
+				pManager->GetJoypad()->GetPress(CInputJoypad::JOYKEY::JOYKEY_DOWN)))
 		{
 			//移動量を減衰しない
 			m_fInertia = -0.02f;
@@ -772,18 +781,8 @@ void CPlayer::Landing(CBlock::CollisionParam& aParam)
 			//モーションをループさせる
 			aMotionSet.nLoop = 1;
 		}
-		//平面の場合
-		else
-		{
-			//減衰強度を下げる
-			m_fInertia = BASE_INERTIA * 0.08f;
-
-			//モーションをループさせない
-			aMotionSet.nLoop = 0;
-		}
-
-		//上昇している
-		if (aParam.pos.y - aParam.oldpos.y > 0.0f)
+		//上昇中or平行
+		if (aParam.pos.y - aParam.oldpos.y >= 0.0f)
 		{
 			//減衰強度を下げる
 			m_fInertia = BASE_INERTIA * 0.2f;
@@ -850,8 +849,12 @@ void CPlayer::Falling(CBlock::CollisionParam& aParam, WallState wallstate)
 //===========================================================================================================
 CPlayer::WallState CPlayer::WallKick(CBlock* pBlock, CBlock::CollisionParam& aParam)
 {
+	//インスタンス取得
+	CManager* pManager = CManager::GetInstance();//マネージャー
+	CInputKeyboard* pKeyboard = pManager->GetKeyboard();//キーボード
+	CInputJoypad* pJoypad = pManager->GetJoypad();//ジョイパッド
+
 	//ローカル変数宣言
-	CManager* pManager = CManager::GetInstance();//マネージャーへのポインタ
 	WallState wallstate = WallState::NONE;//壁の接触状態
 	WallLine Line = WallLine::NONE;//触れた壁の線上
 	D3DXVECTOR3 BlockPos = pBlock->GetPos();//ブロック座標
@@ -860,10 +863,10 @@ CPlayer::WallState CPlayer::WallKick(CBlock* pBlock, CBlock::CollisionParam& aPa
 	bool bCliff = false;//崖掴まり判定
 
 	//移動キーが押されている場合
-	if (pManager->GetKeyboard()->GetPress(DIK_D) || 
-		pManager->GetJoypad()->GetPress(CInputJoypad::JOYKEY::JOYKEY_RIGHT) || 
-		pManager->GetKeyboard()->GetPress(DIK_A) || 
-		pManager->GetJoypad()->GetPress(CInputJoypad::JOYKEY::JOYKEY_LEFT))
+	if (pKeyboard->GetPress(DIK_D) ||
+		pJoypad->GetPress(CInputJoypad::JOYKEY::JOYKEY_RIGHT) ||
+		pKeyboard->GetPress(DIK_A) ||
+		pJoypad->GetPress(CInputJoypad::JOYKEY::JOYKEY_LEFT))
 	{
 		//左側の判定
 		if ((aParam.pos.x + aParam.size.x * 0.5f >= BlockPos.x - BlockSize.x * 0.5f && 
@@ -1367,8 +1370,10 @@ void CPlayer::OccurSmoke()
 //===========================================================================================================
 void CPlayer::DisplayEffect2D()
 {
-	//UIマネージャーのインスタンス取得
-	CUIManager* pUIManager = CManager::GetInstance()->GetScene()->GetUIManager();
+	//インスタンス取得
+	CManager* pManager = CManager::GetInstance();//マネージャー
+	CUIManager* pUIManager = pManager->GetScene()->GetUIManager();//UIマネージャー
+	CCalculate* pCalculate = pManager->GetCalculate();//計算処理
 
 	//インスタンスがnullptr
 	if (pUIManager == nullptr)
@@ -1385,9 +1390,6 @@ void CPlayer::DisplayEffect2D()
 
 	//生成座標設定
 	D3DXVECTOR2 CreatePos(UIpos.x, UIpos.y - UIsize.y * 0.5f);
-
-	//計算処理インスタンス取得
-	CCalculate* pCalculate = CManager::GetInstance()->GetCalculate();
 
 	//向きをランダムに設定
 	float fRot_Z = pCalculate->RandFloat(-RANGE_EFFECT2D_ROT, RANGE_EFFECT2D_ROT);
@@ -1482,7 +1484,14 @@ void CPlayer::CollisionBlock()
 	CBlock::CollisionFlag aFlag = CManager::GetInstance()->GetScene()->GetBlockManager()->Collision(aParam);
 	SetLandingFlag(aFlag.Y_UP);
 
-	//ブロックの上に立っている場合
+	//X軸かZ軸の判定がtrue
+	if (aFlag.X || aFlag.Z)
+	{
+		//ダッシュ状態を解除
+		m_nCntDash = 0;
+	}
+
+	//Y軸の判定がtrue
 	if (aFlag.Y_UP)
 	{
 		//着地中処理
@@ -1493,13 +1502,6 @@ void CPlayer::CollisionBlock()
 	{
 		//落下中処理
 		Falling(aParam, wallstate);
-	}
-
-	//横の判定true
-	if (aFlag.X)
-	{
-		//ダッシュ状態を解除
-		m_nCntDash = 0;
 	}
 
 	//更新されたパラメータを設定
@@ -1560,19 +1562,6 @@ CPlayer::WallState CPlayer::CollisionWallKick(CBlock::CollisionParam& aParam)
 		IncreaseHeat(10.0f);
 		break;
 
-		//崖掴まり
-	case WallState::CLIFF:
-		//プレイヤーを崖掴まり状態に設定
-		m_State = STATE::CLIFF_GRAB;
-
-		//状態カウンタが0の場合
-		if (m_nCntState == 0)
-		{
-			//状態カウンタを設定
-			m_nCntState = RIGOR_CLIFF;
-		}
-		break;
-
 	default:
 		break;
 	}
@@ -1596,7 +1585,8 @@ void CPlayer::CollisionEnemy()
 		aParam.pEnemy != nullptr)
 	{
 		//ダメージ状態中に通常の敵に当たった場合
-		if (aParam.pEnemy->GetEnemyType() != CEnemy::TYPE::BALL && m_State == STATE::DAMAGE)
+		if (aParam.pEnemy->GetEnemyType() != CEnemy::TYPE::BALL && 
+			m_State == STATE::DAMAGE)
 		{
 			//当たったエネミーの情報のポインタをnullptrにする
 			aParam.pEnemy = nullptr;
@@ -1676,7 +1666,7 @@ void CPlayer::CollisionBoss()
 		D3DXVECTOR3 PlayerMove = GetMove();
 
 		//方向ベクトルを求める
-		D3DXVECTOR3 Direction = GetPos() - BossPos;
+		D3DXVECTOR3 Direction = aParam.pos - BossPos;
 		D3DXVec3Normalize(&Direction, &Direction);
 
 		//移動量情報更新
@@ -1733,6 +1723,40 @@ void CPlayer::CollisionBossAttack()
 		//更新された移動量情報を設定
 		SetMove(PlayerMove);
 	}
+}
+
+//===========================================================================================================
+// 発射地点のブロック当たり判定
+//===========================================================================================================
+bool CPlayer::ShotPointCollisionBlock(const D3DXVECTOR3& pos)
+{
+	//インスタンス取得
+	CManager* pManager = CManager::GetInstance();//マネージャー
+	CCollision* pCollision = pManager->GetCollision();//当たり判定処理
+
+	//ブロックの先頭情報を取得
+	CBlock* pBlock = pManager->GetScene()->GetBlockManager()->GetTop();
+
+	//末尾まで繰り返す
+	while (pBlock != nullptr)
+	{
+		//次の情報を保存
+		CBlock* pNext = pBlock->GetNextBlock();
+
+		//当たり判定がtrue
+		if (pBlock->GetBlockType() == CBlock::TYPE::NORMAL && //ブロックタイプがノーマル
+			pCollision->PointBox3D(pos, pBlock->GetPos(), pBlock->GetSize()))
+		{
+			//trueを返す
+			return true;
+		}
+
+		//次の情報を取得
+		pBlock = pNext;
+	}
+
+	//末尾まで当たり判定がfalse
+	return false;
 }
 
 //===========================================================================================================

@@ -28,11 +28,13 @@ public:
 	void Uninit() override;//終了処理
 	void Release() override;//解放処理
 	void Update() override;//更新処理
+	void Draw() override;//描画処理
 	void SetMotionState(int nState) override;//モーション状態設定処理
 	void SetPartsState() override;//パーツごとの状態設定処理
-	void Draw() override;//描画処理
 	static CPlayer* Create(const D3DXVECTOR3& pos);//生成処理
-	float GetHeat() { return m_fHeat; }//ヒート量取得
+
+	//ヒート量
+	float GetHeat() { return m_fHeat; }//取得
 
 	//キル数
 	void IncreaseKill() { m_nKill++; }//加算
@@ -94,7 +96,6 @@ private:
 		NONE = 0,
 		SLIDE,//壁ずり
 		KICK,//壁キック
-		CLIFF,//崖掴まり
 		MAX
 	};
 
@@ -144,10 +145,11 @@ private:
 	void CollisionEnemy();//エネミーとの当たり判定
 	void CollisionBoss();//ボスとの当たり判定
 	void CollisionBossAttack();//ボスの攻撃との当たり判定
+	void CollisionArea();//全エリア
 	void CollisionMiniGameArea();//ミニゲームエリア
 	void CollisionChaseArea();//チェイスエリア
 	void CollisionBossArea();//ボスエリア
-	void CollisionArea();//全エリア
+	bool ShotPointCollisionBlock(const D3DXVECTOR3& pos);//発射地点のブロック当たり判定
 
 	//リスポーン
 	void RespawnChaseArea();//チェイスエリアリスポーン処理
@@ -205,6 +207,7 @@ private:
 	float m_fTargetRot_Y;//目標の角度
 	bool m_bShooting;//射撃フラグ
 	bool m_bBossCreate;//ボス生成済みフラグ
+	bool m_bCollisionBlock;//ブロックとの接触判定
 };
 
 #endif

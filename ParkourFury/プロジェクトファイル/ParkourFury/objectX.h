@@ -40,7 +40,6 @@ public:
 	void Release() override;//解放処理
 	void Update() override;//更新処理
 	void Draw() override;//描画処理
-	void DrawOutLine();//アウトライン描画処理
 
 	//モデル情報
 	void BindModel(CXfile::ModelInfo* aModelInfo) { m_aModelInfo = *aModelInfo; }//設定
@@ -76,19 +75,12 @@ public:
 	//座標の線上
 	STAND_LINE GetStandLine() { return m_StandLine; }//取得
 
-
-
 private:
 	//======================================
 	// 関数
 	//======================================
 	void SetShader(D3DXMATRIX mtxWorld);//シェーダーパラメータ設定
 	void SetStandLine();//座標の線上の設定
-
-	//======================================
-	// 定数
-	//======================================
-	const float OUTLINE_SCALE = 1.1f;//アウトラインの拡大率(太さ)
 
 	//======================================
 	// 変数
@@ -99,6 +91,7 @@ private:
 	D3DXVECTOR3 m_vtxMax;//最大頂点座標
 	D3DXVECTOR3 m_Size;//サイズ
 	D3DXVECTOR3 m_Scale;//拡大率
+	D3DXVECTOR4 m_OutLineScale;//アウトライン拡大率
 	D3DXCOLOR m_OutLineColor;//アウトラインカラー
 	STAND_LINE m_StandLine;//座標の線上
 	float m_fLength;//対角線の長さ

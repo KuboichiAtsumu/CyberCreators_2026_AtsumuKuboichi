@@ -23,13 +23,12 @@ bool CEdit3D::m_bTrigger = false;//移動方法がトリガーかどうか
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CEdit3D::CEdit3D(int nPriority) : CObjectX(nPriority)
+CEdit3D::CEdit3D(int nPriority) : CObjectX(nPriority),
+	m_pPrev(nullptr),
+	m_pNext(nullptr),
+	m_tag(CTag::TAG::BLOCK),
+	m_nType(1)
 {
-	//メンバ変数初期化
-	m_pPrev = nullptr;//前のオブジェクト情報
-	m_pNext = nullptr;//次のオブジェクト情報
-	m_tag = CTag::TAG::BLOCK;//タグ
-	m_nType = 1;//タイプ
 }
 
 //===========================================================================================================
@@ -53,12 +52,18 @@ HRESULT CEdit3D::Init()
 
 	//モデル情報反映
 	CXfile::ModelInfo* pModel = CXfile::GetInstance()->GetAddress(m_tag, m_nType);
-	if (pModel == nullptr) pModel = CXfile::GetInstance()->GetAddress(m_tag, 1);
+	if (pModel == nullptr)
+	{
+		pModel = CXfile::GetInstance()->GetAddress(m_tag, 1);
+	}
 	BindModel(pModel);
 
 	//テクスチャ情報反映
 	LPDIRECT3DTEXTURE9 pTexture = CTexture::GetInstance()->GetAddress(m_tag, m_nType);
-	if (pTexture == nullptr) pTexture = CTexture::GetInstance()->GetAddress(m_tag, 1);
+	if (pTexture == nullptr)
+	{
+		pTexture = CTexture::GetInstance()->GetAddress(m_tag, 1);
+	}
 	BindTexture(pTexture);
 
 	//Xファイルオブジェクト初期化処理
@@ -837,7 +842,6 @@ void CEdit3D::SetCameraPos()
 	//カメラの視点と注視点をオブジェクト位置に合わせて設定
 	CCamera* pCamera = CManager::GetInstance()->GetCamera();
 	pCamera->SetPosR(pos);//注視点
-	//pCamera->SetPosV({ pos.x + pCamera->FirstPosV.x, pos.y + pCamera->FirstPosV.y + pCamera->GetAddHeight(), pos.z + pCamera->FirstPosV.z });//視点
 }
 
 #endif // _DEBUG

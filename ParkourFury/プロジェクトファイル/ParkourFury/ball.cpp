@@ -57,7 +57,10 @@ void CBall::Uninit()
 	CUI* pUI = CManager::GetInstance()->GetScene()->GetUIManager()->FindUI(CUI::TYPE::ESCAPE);
 
 	//ŒŸõŒ‹‰Ê‚ª•sˆê’v
-	if (pUI == nullptr || pUI->GetUIType() != CUI::TYPE::ESCAPE) return;
+	if (pUI == nullptr || pUI->GetUIType() != CUI::TYPE::ESCAPE)
+	{
+		return;
+	}
 
 	//UII—¹ˆ—
 	pUI->Uninit();

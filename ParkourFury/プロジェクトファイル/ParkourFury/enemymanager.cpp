@@ -19,11 +19,10 @@ int CEnemyManager::m_nNowAll = 0;//総数
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CEnemyManager::CEnemyManager() : CObjectManager()
+CEnemyManager::CEnemyManager() : CObjectManager(),
+	m_pTop(nullptr),
+	m_pCur(nullptr)
 {
-	//メンバ変数初期化
-	m_pTop = nullptr;//先頭アドレス
-	m_pCur = nullptr;//終端アドレス
 }
 
 //===========================================================================================================
@@ -38,7 +37,7 @@ CEnemyManager::~CEnemyManager()
 //===========================================================================================================
 HRESULT CEnemyManager::Init()
 {
-	//オブジェクトマネージャー初期化処理
+	//基底クラス初期化処理
 	if (FAILED(CObjectManager::Init()))
 	{
 		return E_FAIL;
@@ -52,7 +51,7 @@ HRESULT CEnemyManager::Init()
 //===========================================================================================================
 void CEnemyManager::Uninit()
 {
-	//オブジェクトマネージャー終了処理
+	//基底クラス終了処理
 	CObjectManager::Uninit();
 }
 
@@ -127,13 +126,6 @@ void CEnemyManager::Update()
 }
 
 //===========================================================================================================
-// 描画処理
-//===========================================================================================================
-void CEnemyManager::Draw()
-{
-}
-
-//===========================================================================================================
 // 登録処理
 //===========================================================================================================
 void CEnemyManager::Regist(CEnemy* pEnemy)
@@ -198,7 +190,6 @@ void CEnemyManager::Load()
 	int nTag = 1;//タグ情報保存用
 	int nType = 0;//タイプ情報保存用
 	int nNumAll = 0;//総数
-	int nCNt = 0;
 
 	//ファイルを開く
 	FILE* pFile = fopen(CManager::GetInstance()->StageFile[static_cast<int>(CManager::GetInstance()->GetScene()->GetMode())], "rb");
@@ -269,6 +260,9 @@ CEnemy* CEnemyManager::FindEnemy(CEnemy::TYPE type)
 	//次のエネミー情報がnullptrになるまで繰り返す
 	while (pEnemy != nullptr)
 	{
+		//次のオブジェクト情報を取得
+		CEnemy* pNext = pEnemy->GetNextEnemy();
+
 		//タイプが一致した場合
 		if (pEnemy->GetEnemyType() == type)
 		{
@@ -277,7 +271,7 @@ CEnemy* CEnemyManager::FindEnemy(CEnemy::TYPE type)
 		}
 
 		//次のエネミー情報のポインタをコピー
-		pEnemy = pEnemy->GetNextEnemy();
+		pEnemy = pNext;
 	}
 
 	return nullptr;

@@ -19,6 +19,7 @@ CObjectX::CObjectX(int nPriority) : CObject3D(nPriority),
 	m_vtxMax( 0.0f, 0.0f, 0.0f ),
 	m_Size( 0.0f, 0.0f, 0.0f ),
 	m_Scale( 1.0f, 1.0f, 1.0f ),
+	m_OutLineScale( 1.1f, 1.1f, 1.1f, 0.0f ),
 	m_OutLineColor( 1.0f, 1.0f, 1.0f, 1.0f ),
 	m_fLength(0.0f),
 	m_fAngle(0.0f),
@@ -119,9 +120,29 @@ void CObjectX::Draw()
 	//ワールドマトリックスの初期化
 	D3DXMatrixIdentity(&mtxWorld);
 
-	//拡大率を反映
-	D3DXMatrixScaling(&mtxScale, m_Scale.x, m_Scale.y, m_Scale.z);
-	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxScale);
+	//シェーダー情報が存在する
+	if (m_pEffect != nullptr)
+	{
+		//シェーダーの拡大率を設定
+		m_pEffect->SetFloat("Scale_X", m_Scale.x);
+		m_pEffect->SetFloat("Scale_Y", m_Scale.y);
+		m_pEffect->SetFloat("Scale_Z", m_Scale.z);
+
+		//アウトラインの太さを設定
+		m_pEffect->SetFloat("OutlineThickness_X", m_OutLineScale.x);
+		m_pEffect->SetFloat("OutlineThickness_Y", m_OutLineScale.y);
+		m_pEffect->SetFloat("OutlineThickness_Z", m_OutLineScale.z);
+
+		//アウトラインのカラーを設定
+		D3DXVECTOR4 Color = static_cast<D3DXVECTOR4>(m_OutLineColor);
+		m_pEffect->SetVector("OutLineColor", &Color);
+	}
+	else
+	{
+		//拡大率を反映
+		D3DXMatrixScaling(&mtxScale, m_Scale.x, m_Scale.y, m_Scale.z);
+		D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxScale);
+	}
 
 	//角度を反映
 	D3DXMatrixRotationYawPitchRoll(&mtxRot, Rot.y, Rot.x, Rot.z);
@@ -159,28 +180,14 @@ void CObjectX::Draw()
 			//テクスチャの設定
 			pDevice->SetTexture(0, pTexture);
 
-			//シェーダー情報が存在しない
-			if (m_pEffect == nullptr)
-			{
-				//モデルの描画
-				m_aModelInfo.pMesh->DrawSubset(nCntMat);
-			}
 			//シェーダー情報が存在する
-			else
+			if(m_pEffect != nullptr)
 			{
 				//シェーダーの描画を開始
 				UINT numPasses = 0;
 				m_pEffect->Begin(&numPasses, 0);
 
-				m_pEffect->SetFloat("Scale_X", m_Scale.x);
-				m_pEffect->SetFloat("Scale_Y", m_Scale.y);
-				m_pEffect->SetFloat("Scale_Z", m_Scale.z);
-
-				m_pEffect->SetFloat("OutlineThickness_X", 1.05f);
-				m_pEffect->SetFloat("OutlineThickness_Y", 1.05f);
-				m_pEffect->SetFloat("OutlineThickness_Z", 1.05f);
-
-				for (UINT Cnt = 0; Cnt < 1; Cnt++)
+				for (UINT Cnt = 0; Cnt < numPasses; Cnt++)
 				{
 					m_pEffect->BeginPass(Cnt);
 
@@ -193,6 +200,12 @@ void CObjectX::Draw()
 				//シェーダーの描画を終了
 				m_pEffect->End();
 			}
+			//シェーダー情報が存在しない
+			else
+			{
+				//モデルの描画
+				m_aModelInfo.pMesh->DrawSubset(nCntMat);
+			}
 		}
 	}
 
@@ -201,73 +214,22 @@ void CObjectX::Draw()
 }
 
 //===========================================================================================================
-// アウトライン描画処理
-//===========================================================================================================
-void CObjectX::DrawOutLine()
-{
-	//ローカル変数宣言
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();//デバイスのポインタ
-	D3DXMATRIX mtxWorld;//ワールドマトリックス情報
-	D3DXMATRIX mtxRot, mtxTrans, mtxParent;//計算用マトリックス
-	D3DXVECTOR3 pos = GetPos();//座標情報
-	D3DXVECTOR3 rot = GetRot();//角度情報
-
-	//ワールドマトリックスの初期化
-	D3DXMatrixIdentity(&mtxWorld);
-
-	//拡大率を反映
-	D3DXMatrixScaling(&mtxWorld, m_Scale.x * OUTLINE_SCALE, m_Scale.y * OUTLINE_SCALE, m_Scale.z * OUTLINE_SCALE);//元のパーツより大きく設定
-	pDevice->SetTransform(D3DTS_WORLD, &mtxWorld);
-
-	//角度を反映
-	D3DXMatrixRotationYawPitchRoll(&mtxRot, rot.y, rot.x, rot.z);
-	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxRot);
-
-	//座標を反映
-	D3DXMatrixTranslation(&mtxTrans, pos.x, pos.y, pos.z);
-	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxTrans);
-
-	//法線の長さを1にする。
-	pDevice->SetRenderState(D3DRS_NORMALIZENORMALS, TRUE);
-
-	//ワールドマトリックスの設定
-	pDevice->SetTransform(D3DTS_WORLD, &mtxWorld);
-
-	//アウトライン描画設定
-	pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CW);//裏面だけ描画
-	pDevice->SetRenderState(D3DRS_ZENABLE, TRUE);//Zバッファ有効化
-
-	//アウトライン色の設定
-	D3DMATERIAL9 OutlineMaterial = {};
-	OutlineMaterial.Diffuse.r = 1.0f;
-	OutlineMaterial.Diffuse.g = 1.0f;
-	OutlineMaterial.Diffuse.b = 1.0f;
-	OutlineMaterial.Diffuse.a = 1.0f;
-	pDevice->SetMaterial(&OutlineMaterial);
-
-	//アウトライン描画
-	for (int nCnt = 0; nCnt < static_cast<int>(m_aModelInfo.dwNumMat); nCnt++)
-	{
-		m_aModelInfo.pMesh->DrawSubset(nCnt);
-	}
-
-	//描画状態を元に戻す
-	pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
-}
-
-//===========================================================================================================
 // シェーダーパラメータ設定
 //===========================================================================================================
 void CObjectX::SetShader(D3DXMATRIX mtxWorld)
 {
 	//シェーダー情報が存在しない
-	if (m_pEffect == nullptr) return;
+	if (m_pEffect == nullptr)
+	{
+		return;
+	}
 
 	//ローカル変数宣言
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();//デバイスのポインタ
+	CManager* pManager = CManager::GetInstance();//マネージャーインスタンス取得
+	LPDIRECT3DDEVICE9 pDevice = pManager->GetRenderer()->GetDevice();//デバイスのポインタ
+	D3DXMATRIX mtxView, mtxProj, mtxWorldViewProj;//計算用マトリックス
 
-	D3DXMATRIX mtxView, mtxProj, mtxWorldViewProj;
-	pDevice->GetTransform(D3DTS_WORLD, &mtxWorld);
+	/*pDevice->GetTransform(D3DTS_WORLD, &mtxWorld);*/
 	pDevice->GetTransform(D3DTS_VIEW, &mtxView);
 	pDevice->GetTransform(D3DTS_PROJECTION, &mtxProj);
 
@@ -278,8 +240,8 @@ void CObjectX::SetShader(D3DXMATRIX mtxWorld)
 	m_pEffect->SetMatrix("WorldViewProj", &mtxWorldViewProj);
 	m_pEffect->SetMatrix("World", &mtxWorld);
 
-	//ライト方向を設定
-	D3DXVECTOR3 lightDir(0.0f, 1.0f, -1.0f);
+	//ライトのベクトルを設定
+	D3DXVECTOR3 lightDir(0.8f, 0.5f, -1.0f);
 	D3DXVec3Normalize(&lightDir, &lightDir);
 	m_pEffect->SetValue("LightDirection", &lightDir, sizeof(D3DXVECTOR3));
 }
