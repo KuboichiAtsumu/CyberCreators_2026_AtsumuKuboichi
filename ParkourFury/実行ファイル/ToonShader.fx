@@ -3,10 +3,11 @@
 //===========================================================================================================
 float4x4 WorldViewProj : WORLDVIEWPROJECTION;//ワールドビュー射影行列
 float4x4 World : WORLD;//ワールド行列
-float3 LightDirection : DIRECTION;//ライトの方向
+float3 LightDirection : DIRECTION;//ライトの方向ベクトル
+float4 OutLineColor = { 1.0f, 1.0f, 1.0f, 1.0f };//アウトラインのカラー
 float OutlineThickness_X;//アウトラインのX軸の厚さ
-float OutlineThickness_Y;//アウトラインのX軸の厚さ
-float OutlineThickness_Z;//アウトラインのX軸の厚さ
+float OutlineThickness_Y;//アウトラインのY軸の厚さ
+float OutlineThickness_Z;//アウトラインのZ軸の厚さ
 float Scale_X;//X軸拡大率
 float Scale_Y;//Y軸拡大率
 float Scale_Z;//Z軸拡大率
@@ -40,6 +41,10 @@ VS_OUTPUT VS_Toon(VS_INPUT input)
     float3 worldNormal = mul(float4(input.Normal, 0.0), World).xyz;
     output.WorldNormal = normalize(worldNormal);
 
+    input.Position.x = input.Position.x * Scale_X;
+    input.Position.y = input.Position.y * Scale_Y;
+    input.Position.z = input.Position.z * Scale_Z;
+
     //頂点座標を変換
     output.Position = mul(input.Position, WorldViewProj);
 
@@ -57,11 +62,11 @@ float4 PS_Toon(VS_OUTPUT input) : COLOR
     //トゥーンシェーディングの段階化
     if (intensity > 0.8f)
     {
-        intensity = 0.9f;
+        intensity = 1.0f;
     }
     else if (intensity > 0.5f)
     {
-        intensity = 0.7f;
+        intensity = 0.75f;
     }
     else if (intensity > 0.2f)
     {
@@ -69,11 +74,11 @@ float4 PS_Toon(VS_OUTPUT input) : COLOR
     }
     else
     {
-        intensity = 0.3f;
+        intensity = 0.25f;
     }
 
     //基本的なトゥーンカラー
-    return float4(0.0f, intensity, 0.8f, 1.0f);
+    return float4(0.0f, intensity, 1.0f, 1.0f);
 }
 
 //===========================================================================================================
@@ -87,15 +92,15 @@ VS_OUTPUT VS_Outline(VS_INPUT input)
     float3 worldNormal = normalize(mul(input.Normal, (float3x3)World));
     output.WorldNormal = normalize(worldNormal);
 
-    input.Position.x = input.Position.x / Scale_X;
-    input.Position.y = input.Position.y / Scale_Y;
-    input.Position.z = input.Position.z / Scale_Z;
+    input.Position.x = input.Position.x * Scale_X;
+    input.Position.y = input.Position.y * Scale_Y;
+    input.Position.z = input.Position.z * Scale_Z;
 
     //頂点を少し押し出す（アウトラインの厚さを調整）
     float3 offset;
-    offset.x = normalize(input.Position.x);
-    offset.y = normalize(input.Position.y);
-    offset.z = normalize(input.Position.z);
+    offset.x = normalize(input.Position.x) * OutlineThickness_X;
+    offset.y = normalize(input.Position.y) * OutlineThickness_Y;
+    offset.z = normalize(input.Position.z) * OutlineThickness_Z;
     float4 worldPos = input.Position + float4(offset, 0.0f);
 
     //頂点座標を変換
@@ -109,7 +114,8 @@ VS_OUTPUT VS_Outline(VS_INPUT input)
 //===========================================================================================================
 float4 PS_Outline(VS_OUTPUT input) : COLOR
 {
-    return float4(0.8f, 0.8f, 0.8f, 1.0f);//白のアウトライン
+    //白のアウトライン
+    return OutLineColor;
 }
 
 //===========================================================================================================
@@ -119,7 +125,8 @@ technique ToonShadingWithOutline
 {
     pass P0
     {
-        CullMode = CCW;//通常の面を描画
+        //通常の面を描画
+        CullMode = CCW;
 
         //トゥーンシェーディング
         VertexShader = compile vs_2_0 VS_Toon();
@@ -127,7 +134,8 @@ technique ToonShadingWithOutline
     }
     pass P1
     {
-        CullMode = CW;//裏面を描画（アウトライン用）
+        //裏面を描画（アウトライン用）
+        CullMode = CW;
 
         //アウトライン描画
         VertexShader = compile vs_2_0 VS_Outline();
