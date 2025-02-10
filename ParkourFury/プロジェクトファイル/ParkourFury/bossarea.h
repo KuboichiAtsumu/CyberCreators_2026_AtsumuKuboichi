@@ -27,8 +27,8 @@ public:
 	void Uninit() override;//I—¹ˆ—
 	void Release() override;//‰ğ•úˆ—
 	void Update() override;//XVˆ—
-	void Draw() override;//•`‰æˆ—
-	bool Collision(D3DXVECTOR3 pos) override;//“–‚½‚è”»’è
+	void Draw() override {};//•`‰æˆ—
+	bool Collision(const D3DXVECTOR3& pos) override;//“–‚½‚è”»’è
 };
 
 #endif

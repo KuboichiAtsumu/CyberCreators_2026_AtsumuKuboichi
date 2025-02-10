@@ -106,8 +106,7 @@ private:
 //===========================================================================================================
 // ダウンキャスト処理
 //===========================================================================================================
-template<typename T1, typename T2>
-inline T1* CObject::DownCast(T2* pBase)
+template<typename T1, typename T2> inline T1* CObject::DownCast(T2* pBase)
 {
 	//引数のオブジェクトを指定されたクラスにダウンキャスト
 	T1* pObj = dynamic_cast<T1*>(pBase) ;

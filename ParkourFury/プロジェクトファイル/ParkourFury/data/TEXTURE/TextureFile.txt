@@ -52,6 +52,14 @@ FILE
 3
 data/TEXTURE/EFFECT/Smoke.png
 
+FILE
+4
+data/TEXTURE/EFFECT/MiniGameClear.png
+
+FILE
+5
+data/TEXTURE/EFFECT/MiniGameFailed.png
+
 END_FILE
 
 #====================================================

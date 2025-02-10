@@ -558,6 +558,12 @@
     <ClCompile Include="descriptgage.cpp">
       <Filter>ソース ファイル\Object\2D\UI\Tutorial</Filter>
     </ClCompile>
+    <ClCompile Include="minigameclear.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="minigamefailed.cpp">
+      <Filter>ソース ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h">
@@ -893,6 +899,12 @@
     <ClInclude Include="descriptgage.h">
       <Filter>ヘッダー ファイル\Object\2D\UI\Tutorial</Filter>
     </ClInclude>
+    <ClInclude Include="minigameclear.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="minigamefailed.h">
+      <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="ToonShader.fx">
@@ -901,6 +913,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\TEXTURE\TextureFile.txt">
+      <Filter>テキストファイル</Filter>
+    </Text>
+    <Text Include="data\MODEL\ModelFile.txt">
       <Filter>テキストファイル</Filter>
     </Text>
   </ItemGroup>

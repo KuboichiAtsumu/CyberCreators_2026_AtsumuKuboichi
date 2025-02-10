@@ -13,25 +13,21 @@
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CObject2D::CObject2D(int nPriority) : CObject(nPriority)
+CObject2D::CObject2D(int nPriority) : CObject(nPriority),
+	m_pos( 0.0f, 0.0f ),
+	m_size( 0.0f, 0.0f ),
+	m_move( 0.0f, 0.0f ),
+	m_rot( 0.0f, 0.0f, 0.0f ),
+	m_col( 1.0f, 1.0f, 1.0f, 1.0f ),
+	m_nDivisionWidth(1),
+	m_nDivisionHeight(1),
+	m_nDelayAnim(1),
+	m_nPatternAnimWidth(1),
+	m_nPatternAnimHeight(1),
+	m_nCounterAnim(0),
+	m_fAngle(0.0f),
+	m_fLength(0.0f)
 {
-	//メンバ変数初期化
-	m_pos = { 0.0f, 0.0f };//座標
-	m_size = { 0.0f, 0.0f };//サイズ
-	m_move = { 0.0f, 0.0f };//移動量
-	m_rot = { 0.0f, 0.0f, 0.0f };//角度
-	m_col = { 1.0f, 1.0f, 1.0f, 1.0f };//色
-
-	//テクスチャアニメーション
-	m_nDivisionWidth = 1;//横のテクスチャ分割数
-	m_nDivisionHeight = 1;//縦のテクスチャ分割数
-	m_nDelayAnim = 1;//アニメーション遅延
-	m_nPatternAnimWidth = 1;//横のアニメーションパターン
-	m_nPatternAnimHeight = 1;//縦のアニメーションパターン
-	m_nCounterAnim = 0;//アニメーションカウンタ
-
-	m_fAngle = 0.0f;//対角線の角度
-	m_fLength = 0.0f;//対角線の長さ
 }
 
 //===========================================================================================================

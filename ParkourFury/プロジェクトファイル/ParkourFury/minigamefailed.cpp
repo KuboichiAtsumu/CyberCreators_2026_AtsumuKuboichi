@@ -1,6 +1,6 @@
 //==============================================================================================================================================
 //
-// ビルボードエフェクトに関する処理
+// ミニゲーム失敗演出に関する処理
 // Author : Atsumu Kuboichi
 //
 //==============================================================================================================================================
@@ -8,43 +8,35 @@
 //===========================================================================================================
 // ヘッダーインクルード
 //===========================================================================================================
-#include "billboardeffect.h"
-#include "particle.h"
-#include "target.h"
-#include "smoke.h"
-#include "minigameclear.h"
 #include "minigamefailed.h"
 
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CBillboardEffect::CBillboardEffect(int nPriority) :	CBillboard{ nPriority },
-	m_type(TYPE::NONE)
+CMiniGameFailed::CMiniGameFailed(int nPriority) : CBillboardEffect(nPriority),
+	m_pTargetObj(nullptr),
+	m_DiffDistance( 0.0f, 0.0f, 0.0f ),
+	m_nDisPlayTime(MAX_FRAME * DISPLAY_TIME)
 {
 }
 
 //===========================================================================================================
 // デストラクタ
 //===========================================================================================================
-CBillboardEffect::~CBillboardEffect()
+CMiniGameFailed::~CMiniGameFailed()
 {
 }
 
 //===========================================================================================================
 // 初期化処理
 //===========================================================================================================
-HRESULT CBillboardEffect::Init()
+HRESULT CMiniGameFailed::Init()
 {
-	//タイプを保存
-	int nType = static_cast<int>(m_type);
-
-	//テクスチャ生成
-	CTexture* pTex = CTexture::GetInstance();//取得
-	int nTexIdx = pTex->Regist(CTag::TAG::EFFECT, nType, TEXTURE_FILE[nType]);//登録
-	BindTexture(pTex->GetAddress(nTexIdx));//設定
-
 	//基底クラス初期化処理
-	if (FAILED(CBillboard::Init())) return E_FAIL;
+	if (FAILED(CBillboardEffect::Init()))
+	{
+		return E_FAIL;
+	}
 
 	return S_OK;
 }
@@ -52,85 +44,101 @@ HRESULT CBillboardEffect::Init()
 //===========================================================================================================
 // 終了処理
 //===========================================================================================================
-void CBillboardEffect::Uninit()
+void CMiniGameFailed::Uninit()
 {
 	//基底クラス終了処理
-	CBillboard::Uninit();
+	CBillboardEffect::Uninit();
 }
 
 //===========================================================================================================
 // 解放処理
 //===========================================================================================================
-void CBillboardEffect::Release()
+void CMiniGameFailed::Release()
 {
+	//対象オブジェクトをnullptrにする
+	m_pTargetObj = nullptr;
+
 	//基底クラス解放処理
-	CBillboard::Release();
+	CBillboardEffect::Release();
 }
 
 //===========================================================================================================
 // 更新処理
 //===========================================================================================================
-void CBillboardEffect::Update()
+void CMiniGameFailed::Update()
 {
+	//座標調節
+	OffSetPos();
+
+	//表示時間減少
+	DecDisPlayTime();
+
 	//基底クラス更新処理
-	CBillboard::Update();
+	CBillboardEffect::Update();
 }
 
 //===========================================================================================================
 // 描画処理
 //===========================================================================================================
-void CBillboardEffect::Draw()
+void CMiniGameFailed::Draw()
 {
 	//基底クラス描画処理
-	CBillboard::Draw();
+	CBillboardEffect::Draw();
 }
 
 //===========================================================================================================
 // 生成処理
 //===========================================================================================================
-CBillboardEffect* CBillboardEffect::Create(TYPE type, const D3DXVECTOR3& pos, const D3DXVECTOR3& size)
+CMiniGameFailed* CMiniGameFailed::Create(const D3DXVECTOR3& pos, CObject3D* pObj)
 {
 	//メモリを動的確保
-	CBillboardEffect* pBillboardEffect = nullptr;
-	switch (type)
-	{
-		//パーティクル
-	case TYPE::PARTICLE:
-		pBillboardEffect = NEW CParticle();
-		break;
+	CBillboardEffect* pBillboardEffect = CBillboardEffect::Create(CBillboardEffect::TYPE::MINIGAME_FAILED, pos, SIZE);
 
-		//ターゲット
-	case TYPE::TARGET:
-		pBillboardEffect = NEW CTarget();
-		break;
-
-		//煙
-	case TYPE::SMOKE:
-		pBillboardEffect = NEW CSmoke();
-		break;
-
-		//ミニゲームクリア
-	case TYPE::MINIGAME_CLEAR:
-		pBillboardEffect = NEW CMiniGameClear();
-		break;
-
-		//ミニゲーム失敗
-	case TYPE::MINIGAME_FAILED:
-		pBillboardEffect = NEW CMiniGameFailed();
-		break;
-
-	default:
-		break;
-	}
+	//ダウンキャスト
+	CMiniGameFailed* pMiniGameFailed = CObject::DownCast<CMiniGameFailed, CBillboardEffect>(pBillboardEffect);
 
 	//ターゲット情報が存在する場合
-	if (pBillboardEffect != nullptr)
+	if (pMiniGameFailed != nullptr)
 	{
 		//パラメータ設定
-		pBillboardEffect->SetPos(pos);//座標
-		pBillboardEffect->SetSize(size);//サイズ
-		pBillboardEffect->m_type = type;//タイプ
+		pMiniGameFailed->m_pTargetObj = pObj;//対象オブジェクトのポインタ
+		pMiniGameFailed->m_DiffDistance = pos - pObj->GetPos();//対象オブジェクトとの距離
+
+		//初期化処理
+		pMiniGameFailed->Init();
 	}
 
-	return pBillboardEffect;
+	return pMiniGameFailed;
 }
+
+//===========================================================================================================
+// 座標調節
+//===========================================================================================================
+void CMiniGameFailed::OffSetPos()
+{
+	//座標取得
+	D3DXVECTOR3 pos = GetPos();
+
+	//常に対象オブジェクトとの距離が一定になるように調整
+	pos = m_pTargetObj->GetPos() + m_DiffDistance;
+
+	//座標設定
+	SetPos(pos);
+}
+
+//===========================================================================================================
+// 表示時間減少
+//===========================================================================================================
+void CMiniGameFailed::DecDisPlayTime()
+{
+	//表示時間減少
+	m_nDisPlayTime--;
+
+	//表示時間が0
+	if (m_nDisPlayTime <= 0)
+	{
+		//終了処理
+		Uninit();
+	}
+}
+

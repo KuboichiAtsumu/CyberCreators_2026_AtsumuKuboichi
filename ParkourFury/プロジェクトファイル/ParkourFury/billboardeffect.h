@@ -27,6 +27,8 @@ public:
 		PARTICLE,//パーティクル
 		TARGET,//ターゲット
 		SMOKE,//煙
+		MINIGAME_CLEAR,//ミニゲームクリア
+		MINIGAME_FAILED,//ミニゲーム失敗
 		MAX
 	};
 
@@ -55,6 +57,8 @@ private:
 		"data/TEXTURE/EFFECT/Particle.jpg",//パーティクル
 		"data/TEXTURE/EFFECT/Target.png",//ターゲット
 		"data/TEXTURE/EFFECT/Smoke.png",//煙
+		"data/TEXTURE/EFFECT/MiniGameClear.png",//ミニゲームクリア
+		"data/TEXTURE/EFFECT/MiniGameFailed.png",//ミニゲーム失敗
 	};
 
 	//======================================

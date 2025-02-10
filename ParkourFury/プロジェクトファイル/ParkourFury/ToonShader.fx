@@ -41,6 +41,7 @@ VS_OUTPUT VS_Toon(VS_INPUT input)
     float3 worldNormal = mul(float4(input.Normal, 0.0), World).xyz;
     output.WorldNormal = normalize(worldNormal);
 
+    //ƒ‚ƒfƒ‹‚ÌŠg‘å—¦‚ğİ’è
     input.Position.x = input.Position.x * Scale_X;
     input.Position.y = input.Position.y * Scale_Y;
     input.Position.z = input.Position.z * Scale_Z;

@@ -38,7 +38,7 @@ HRESULT CLight::Init()
 
 	//ƒ‰ƒCƒg‚Ì•ûŒü‚ğİ’è
 	vecDir[0] = D3DXVECTOR3(0.3f, 0.2f, -0.4f);
-	vecDir[1] = D3DXVECTOR3(-0.5f, -0.3f, 0.2f);
+	vecDir[1] = D3DXVECTOR3(-0.5f, -0.3f, -1.0f);
 	vecDir[2] = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 
 	for (int nCntLight = 0; nCntLight < MAX_LIGHT; nCntLight++)

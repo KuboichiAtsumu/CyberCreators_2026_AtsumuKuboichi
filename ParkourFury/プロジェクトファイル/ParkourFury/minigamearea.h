@@ -27,14 +27,8 @@ public:
 	void Uninit() override;//終了処理
 	void Release() override;//解放処理
 	void Update() override;//更新処理
-	void Draw() override;//描画処理
-	bool Collision(D3DXVECTOR3 pos) override;//当たり判定
-
-private:
-	//======================================
-	// 関数
-	//======================================
-	void CountEnemy();//エリア内のエネミーカウント処理
+	void Draw() override {};//描画処理
+	bool Collision(const D3DXVECTOR3& pos) override;//当たり判定
 };
 
 #endif

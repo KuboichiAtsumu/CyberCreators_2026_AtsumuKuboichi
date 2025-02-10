@@ -9,6 +9,11 @@
 // ヘッダーインクルード
 //===========================================================================================================
 #include "minigamearea.h"
+#include "enemymanager.h"
+#include "areamanager.h"
+#include "minigame.h"
+#include "game.h"
+#include "game.h"
 
 //===========================================================================================================
 // コンストラクタ
@@ -41,7 +46,6 @@ HRESULT CMiniGameArea::Init()
 //===========================================================================================================
 // 終了処理
 //===========================================================================================================
-#include "enemymanager.h"
 void CMiniGameArea::Uninit()
 {
 	//基底クラス終了処理
@@ -64,97 +68,12 @@ void CMiniGameArea::Update()
 {
 	//基底クラス更新処理
 	CArea::Update();
-
-	//エネミーカウント処理
-	CountEnemy();
-}
-
-//===========================================================================================================
-// エリア内のエネミーカウント処理
-//===========================================================================================================
-#include "areamanager.h"
-#include "minigame.h"
-#include "game.h"
-void CMiniGameArea::CountEnemy()
-{
-	//シーンのインスタンスを取得
-	CScene* pScene = CManager::GetInstance()->GetScene();
-
-	//ローカル変数宣言
-	int nCntEnemy = 0;//エネミーカウンタ
-
-	//エネミーの先頭オブジェクトを取得
-	CEnemy* pEnemy = pScene->GetEnemyManager()->GetTop();
-
-	//オブジェクト情報がnullptrになるまで繰り返す
-	while (pEnemy != nullptr)
-	{
-		//次のオブジェクト情報を取得
-		CEnemy* pNext = pEnemy->GetNextEnemy();
-
-		//当たり判定がtrueの場合
-		if (CArea::Collision(pEnemy->GetPos()))
-		{
-			//カウンタを加算
-			nCntEnemy++;
-		}
-
-		//オブジェクト情報を次の情報に変更する
-		pEnemy = pNext;
-	}
-
-	//ゲームシーンのインスタンスを取得
-	CGame* pGame = CGame::GetInstance();
-
-	//制限時間内に全ての敵を撃破
-	if (pGame != nullptr && 
-		pGame->GetArea() == CGame::GAME_AREA::MINI_GAME &&
-		nCntEnemy == 0)
-	{
-		//ミニゲームエリアを検索
-		CArea* pArea = pScene->GetAreaManager()->FindArea(CArea::TYPE::MINI_GAME);
-
-		//エリア情報がnullptrではない場合
-		if (pArea != nullptr)
-		{
-			//エリアを削除
-			pArea->Uninit();
-		}
-
-		//現在のエリアを通常エリアに設定
-		pGame->SetArea(CGame::GAME_AREA::NORMAL);
-
-		//イベントカテゴリーのオブジェクトを検索
-		CObject* pFindObj = CObject::FindObject(CObject::Category::EVENT);
-
-		//検索結果がnullptrではない場合
-		if (pFindObj != nullptr)
-		{
-			//ミニゲームクラスにダウンキャスト
-			CMiniGame* pMiniGame = CObject::DownCast<CMiniGame, CObject>(pFindObj);
-
-			//ダウンキャスト成功
-			if (pMiniGame != nullptr)
-			{
-				//イベント終了
-				pMiniGame->Uninit();
-			}
-		}
-	}
-}
-
-//===========================================================================================================
-// 描画処理
-//===========================================================================================================
-void CMiniGameArea::Draw()
-{
 }
 
 //===========================================================================================================
 // 当たり判定
 //===========================================================================================================
-#include "game.h"
-bool CMiniGameArea::Collision(D3DXVECTOR3 pos)
+bool CMiniGameArea::Collision(const D3DXVECTOR3& pos)
 {
 	//当たり判定フラグ
 	bool bCollision = false;

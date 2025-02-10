@@ -13,8 +13,7 @@
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CTarget::CTarget(int nPriority)
-	: CBillboardEffect(nPriority),
+CTarget::CTarget(int nPriority)	: CBillboardEffect(nPriority),
 	m_pTargetObj(nullptr)
 {
 }

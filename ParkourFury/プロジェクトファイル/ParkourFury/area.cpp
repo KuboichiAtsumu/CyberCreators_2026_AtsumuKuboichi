@@ -86,7 +86,7 @@ void CArea::Draw()
 //===========================================================================================================
 // 生成処理
 //===========================================================================================================
-CArea* CArea::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale, TYPE type)
+CArea* CArea::Create(const D3DXVECTOR3& pos, const D3DXVECTOR3& rot, const D3DXVECTOR3& scale, TYPE type)
 {
 	//タイプに応じてメモリを動的確保
 	CArea* pArea = nullptr;
@@ -134,7 +134,7 @@ CArea* CArea::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale, TYPE t
 //===========================================================================================================
 // 当たり判定処理
 //===========================================================================================================
-bool CArea::Collision(D3DXVECTOR3 pos)
+bool CArea::Collision(const D3DXVECTOR3& pos)
 {
 	//情報を取得
 	bool bCollision = false;//当たり判定用フラグ

@@ -9,6 +9,13 @@
 // ヘッダーインクルード
 //===========================================================================================================
 #include "minigame.h"
+#include "game.h"
+#include "areamanager.h"
+#include "enemymanager.h"
+#include "player.h"
+#include "UI.h"
+#include "minigameclear.h"
+#include "minigamefailed.h"
 
 //===========================================================================================================
 // 静的メンバ変数初期化
@@ -18,11 +25,9 @@ int CMiniGame::m_nTimer = 0;
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CMiniGame::CMiniGame(int nPriority) : 
-	CObject{ nPriority },
-	m_nCntFrame{ 0 }
+CMiniGame::CMiniGame(int nPriority) : CObject(nPriority),
+	m_nCntFrame(0)
 {
-	//メンバ変数初期化
 	m_nTimer = TIMER;//タイマー
 }
 
@@ -68,15 +73,13 @@ void CMiniGame::Release()
 //===========================================================================================================
 // 更新処理
 //===========================================================================================================
-#include "game.h"
 void CMiniGame::Update()
 {
 	//ゲームシーンのインスタンス取得
 	CGame* pGame = CGame::GetInstance();
 
 	//ミニゲーム中ではない場合
-	if (pGame != nullptr &&
-		pGame->GetArea() != CGame::GAME_AREA::MINI_GAME)
+	if (pGame != nullptr && pGame->GetArea() != CGame::GAME_AREA::MINI_GAME)
 	{
 		//終了処理
 		Uninit();
@@ -92,8 +95,6 @@ void CMiniGame::Update()
 //===========================================================================================================
 // タイマーカウント処理
 //===========================================================================================================
-#include "areamanager.h"
-#include "enemymanager.h"
 void CMiniGame::TimerCount()
 {
 	//フレームカウンタを加算
@@ -112,48 +113,73 @@ void CMiniGame::TimerCount()
 		return;
 	}
 
-	//タイマーが0ではない場合
-	if (m_nTimer > 0)
+	//シーンのインスタンスを取得
+	CScene* pScene = CManager::GetInstance()->GetScene();
+
+	//ミニゲームエリアを検索
+	CArea* pArea = pScene->GetAreaManager()->FindArea(CArea::TYPE::MINI_GAME);
+
+	//エリア情報がnullptrではない場合
+	if (pArea == nullptr)
 	{
-		//タイマーを減らす
-		m_nTimer--;
+		assert(false);
 	}
 
-	//タイマーが0の場合
-	if (m_nTimer == 0)
+	//エネミーカウンタ
+	int nCntEnemy = 0;
+	std::vector<CEnemy*> aEnemy;
+
+	//エネミーの先頭オブジェクトを取得
+	CEnemy* pEnemy = pScene->GetEnemyManager()->GetTop();
+
+	//オブジェクト情報がnullptrになるまで繰り返す
+	while (pEnemy != nullptr)
 	{
-		//ミニゲームエリアを検索
-		CArea* pArea = CManager::GetInstance()->GetScene()->GetAreaManager()->FindArea(CArea::TYPE::MINI_GAME);
+		//次のオブジェクト情報を取得
+		CEnemy* pNext = pEnemy->GetNextEnemy();
 
-		//エリア情報がnullptrではない場合
-		if (pArea != nullptr)
+		//当たり判定がtrueの場合
+		if (pArea->Collision(pEnemy->GetPos()))
 		{
-			//エリアを削除
-			pArea->Uninit();
+			//エネミーカウンタ加算
+			nCntEnemy++;
+
+			//対象のエネミー情報を保存
+			aEnemy.push_back(pEnemy);
 		}
 
-		//シーンのインスタンスを取得
-		CScene* pScene = CManager::GetInstance()->GetScene();
+		//オブジェクト情報を次の情報に変更する
+		pEnemy = pNext;
+	}
 
-		//エネミーの先頭オブジェクトを取得
-		CEnemy* pEnemy = pScene->GetEnemyManager()->GetTop();
+	//プレイヤーカテゴリーのオブジェクト情報を取得
+	CObject* pFindObj = CObject::FindObject(CObject::Category::PLAYER);
+	CPlayer* pPlayer = nullptr;
 
-		//オブジェクト情報がnullptrになるまで繰り返す
-		while (pEnemy != nullptr)
-		{
-			//次のオブジェクト情報を取得
-			CEnemy* pNext = pEnemy->GetNextEnemy();
+	//オブジェクト情報が存在する場合
+	if (pFindObj != nullptr)
+	{
+		//プレイヤークラスにダウンキャスト
+		pPlayer = CObject::DownCast<CPlayer, CObject>(pFindObj);
+	}
+	//オブジェクト情報が存在しない場合
+	else
+	{
+		assert(false);
+	}
 
-			//当たり判定がtrueの場合
-			if (pArea->Collision(pEnemy->GetPos()))
-			{
-				//終了処理
-				pEnemy->Uninit();
-			}
+	//エフェクト生成座標を設定
+	D3DXVECTOR3 CreatePos = pPlayer->GetPos();
+	CreatePos.y += CREATE_EFFECT_HEIGHT;
 
-			//オブジェクト情報を次の情報に変更する
-			pEnemy = pNext;
-		}
+	//エリア内のエネミーが0
+	if (nCntEnemy == 0)
+	{
+		//プレイヤーの上にクリアエフェクトを表示
+		CMiniGameClear::Create(CreatePos, pPlayer);
+
+		//エリアを削除
+		pArea->Uninit();
 
 		//現在のエリアを通常エリアに設定
 		CGame::GetInstance()->SetArea(CGame::GAME_AREA::NORMAL);
@@ -161,12 +187,52 @@ void CMiniGame::TimerCount()
 		//終了処理
 		Uninit();
 	}
+
+	//タイマーが0ではない場合
+	if (m_nTimer > 0)
+	{
+		//タイマーを減らす
+		m_nTimer--;
+	}
+
+	//エネミー数を保存
+	int nNumEnemy = aEnemy.size();
+
+	//タイマーが0の時にエネミーが残っている場合
+	if (m_nTimer == 0 && nCntEnemy > 0)
+	{
+		//エリア内のエネミーを削除
+		for (int nCnt = 0; nCnt < nNumEnemy; nCnt++)
+		{
+			aEnemy.at(nCnt)->Uninit();
+		}
+
+		//プレイヤーの上に失敗エフェクトを表示
+		CMiniGameFailed::Create(CreatePos, pPlayer);
+
+		//エリアを削除
+		pArea->Uninit();
+
+		//現在のエリアを通常エリアに設定
+		CGame::GetInstance()->SetArea(CGame::GAME_AREA::NORMAL);
+
+		//終了処理
+		Uninit();
+	}
+
+	//エリア内のエネミーを削除
+	for (int nCnt = 0; nCnt < nNumEnemy; nCnt++)
+	{
+		aEnemy.at(nCnt) = nullptr;
+	}
+
+	//配列を解放
+	aEnemy.clear();
 }
 
 //===========================================================================================================
 // 生成処理
 //===========================================================================================================
-#include "UI.h"
 CMiniGame* CMiniGame::Create()
 {
 	//メモリを動的確保
