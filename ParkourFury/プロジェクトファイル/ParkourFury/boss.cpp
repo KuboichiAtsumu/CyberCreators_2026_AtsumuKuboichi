@@ -9,20 +9,29 @@
 // ヘッダーインクルード
 //===========================================================================================================
 #include "boss.h"
+#include "UI.h"
+#include "game.h"
+#include "enemymanager.h"
+#include "bossmovepoint.h"
+#include "blockmanager.h"
+#include "player.h"
+#include "bossarea.h"
+#include "bossattack.h"
+#include "target.h"
+#include "areamanager.h"
 
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CBoss::CBoss(int nPriority) : 
-	CMotionCharacter(nPriority),
-	m_State{ STATE::NEUTRAL },
-	m_nLife{ MAX_LIFE },
-	m_nSetCoolTime{ 120 },
-	m_nAttackCT{ ATTACK_TIME },
-	m_nIdxPosition{ -1 },
-	m_nOldPosition { m_nIdxPosition },
-	m_nAttackPattern{ -1 },
-	m_bAttack{ false }
+CBoss::CBoss(int nPriority) : CMotionCharacter(nPriority),
+	m_State(STATE::NEUTRAL),
+	m_nLife(MAX_LIFE),
+	m_nSetCoolTime(120),
+	m_nAttackCT(ATTACK_TIME),
+	m_nIdxPosition(-1),
+	m_nOldPosition(m_nIdxPosition),
+	m_nAttackPattern(-1),
+	m_bAttack(false)
 {
 }
 
@@ -36,7 +45,6 @@ CBoss::~CBoss()
 //===========================================================================================================
 // 初期化処理
 //===========================================================================================================
-#include "UI.h"
 HRESULT CBoss::Init()
 {
 	//基底クラス初期化処理
@@ -75,7 +83,6 @@ void CBoss::Release()
 //===========================================================================================================
 // 更新処理
 //===========================================================================================================
-#include "game.h"
 void CBoss::Update()
 {
 	//エディタモードの場合
@@ -94,9 +101,9 @@ void CBoss::Update()
 	CGame* pGame = CGame::GetInstance();
 
 	//現在のエリアがボスエリアではない場合
-	if (pGame != nullptr && 
-		pGame->GetArea() != CGame::GAME_AREA::BOSS)
-	{//更新せずに処理を抜ける
+	if (pGame != nullptr && pGame->GetArea() != CGame::GAME_AREA::BOSS)
+	{
+		//更新せずに処理を抜ける
 		return;
 	}
 
@@ -141,7 +148,6 @@ void CBoss::Draw()
 //===========================================================================================================
 // 生成処理
 //===========================================================================================================
-#include "enemymanager.h"
 CBoss* CBoss::Create(D3DXVECTOR3 pos)
 {
 	//タイプに応じてメモリを動的確保
@@ -449,8 +455,6 @@ bool CBoss::Collision_Z(CollisionParam aParam)
 //===========================================================================================================
 // 立ち位置の設定処理
 //===========================================================================================================
-#include "bossmovepoint.h"
-#include "blockmanager.h"
 void CBoss::SetPosition()
 {
 	//攻撃中の場合
@@ -507,7 +511,6 @@ void CBoss::SetPosition()
 //===========================================================================================================
 // カメラワーク情報設定処理
 //===========================================================================================================
-#include "player.h"
 void CBoss::SetCameraWorkInfo()
 {
 	//ローカル変数宣言
@@ -556,7 +559,10 @@ void CBoss::SetCameraWorkInfo()
 	float fDistance = sqrtf(powf((PlayerPos.y - BossPos.y), 2.0f) + powf((PlayerPos.z - BossPos.z), 2.0f)) * 0.5f + pCamera->GetBossMinDistance();
 
 	//最大値を超えないように調整
-	if (fDistance > pCamera->GetBossMaxDistance()) fDistance = pCamera->GetBossMaxDistance();
+	if (fDistance > pCamera->GetBossMaxDistance())
+	{
+		fDistance = pCamera->GetBossMaxDistance();
+	}
 
 	//カメラワーク情報設定
 	pCamera->SetCameraWork({ CameraPosR.x - fDistance , CameraPosR.y, CameraPosR.z }, CameraPosR, 30);
@@ -609,10 +615,6 @@ void CBoss::Move()
 //===========================================================================================================
 // 攻撃処理
 //===========================================================================================================
-#include "bossarea.h"
-#include "player.h"
-#include "bossattack.h"
-#include "target.h"
 void CBoss::Attack()
 {
 	//攻撃フラグがfalseの場合
@@ -671,7 +673,6 @@ void CBoss::Attack()
 //===========================================================================================================
 // 攻撃パターン設定処理
 //===========================================================================================================
-#include "areamanager.h"
 void CBoss::SetAttackPattern()
 {
 	//立ち位置に応じて次の行動を変化させる
@@ -868,7 +869,6 @@ void CBoss::BlockCreate()
 //===========================================================================================================
 // ブロックとの当たり判定
 //===========================================================================================================
-#include "blockmanager.h"
 void CBoss::CollisionBlock()
 {
 	//当たり判定用パラメータ設定
@@ -891,7 +891,6 @@ void CBoss::CollisionBlock()
 //===========================================================================================================
 // 角度修正処理
 //===========================================================================================================
-#include "player.h"
 void CBoss::AngleModifying()
 {
 	//プレイヤーカテゴリーのオブジェクト情報を取得

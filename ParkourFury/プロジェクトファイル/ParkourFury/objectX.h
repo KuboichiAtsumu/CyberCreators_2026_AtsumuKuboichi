@@ -42,7 +42,7 @@ public:
 	void Draw() override;//描画処理
 
 	//モデル情報
-	void BindModel(CXfile::ModelInfo* aModelInfo) { m_aModelInfo = *aModelInfo; }//設定
+	void BindModel(CXfile::ModelInfo* pModelInfo) { m_aModelInfo = *pModelInfo; }//設定
 	CXfile::ModelInfo GetModelInfo() { return m_aModelInfo; }//取得
 
 	//シェーダー情報
@@ -62,24 +62,33 @@ public:
 	void SetUpdateSize(const D3DXVECTOR3& size) { m_Size = size; }//更新されたサイズ情報を設定
 	D3DXVECTOR3& GetSize() { return m_Size; }//取得
 
+	//拡大率情報
+	void SetScale(const D3DXVECTOR3& scale) { m_Scale = scale; }//設定
+	D3DXVECTOR3& GetScale() { return m_Scale; }//取得
+
+	//アウトライン拡大率
+	void SetOutLineScale(const D3DXVECTOR3& OutLineScale) { m_OutLineScale = OutLineScale; }//設定
+
+	//アウトラインカラー
+	void SetOutLineColor(const D3DXCOLOR& OutLineColor) { m_OutLineColor = OutLineColor; }//設定
+
+	//座標の線上
+	STAND_LINE GetStandLine() { return m_StandLine; }//取得
+
 	//対角線の長さ
 	void SetLength(float fLength) { m_fLength = fLength; }//設定
 
 	//対角線の角度
 	void SetAngle(float fAngle) { m_fAngle = fAngle; }//設定
 
-	//拡大率情報
-	void SetScale(const D3DXVECTOR3& scale) { m_Scale = scale; }//設定
-	D3DXVECTOR3& GetScale() { return m_Scale; }//取得
-
-	//座標の線上
-	STAND_LINE GetStandLine() { return m_StandLine; }//取得
+	//アウトライン描画フラグ
+	void SetOutLineFlag(bool bOutLine) { m_bOutLine = bOutLine; }//設定
 
 private:
 	//======================================
 	// 関数
 	//======================================
-	void SetShader(D3DXMATRIX mtxWorld);//シェーダーパラメータ設定
+	void SetShader(const D3DXMATRIX& mtxWorld);//シェーダーパラメータ設定
 	void SetStandLine();//座標の線上の設定
 
 	//======================================
@@ -91,11 +100,12 @@ private:
 	D3DXVECTOR3 m_vtxMax;//最大頂点座標
 	D3DXVECTOR3 m_Size;//サイズ
 	D3DXVECTOR3 m_Scale;//拡大率
-	D3DXVECTOR4 m_OutLineScale;//アウトライン拡大率
+	D3DXVECTOR3 m_OutLineScale;//アウトライン拡大率
 	D3DXCOLOR m_OutLineColor;//アウトラインカラー
 	STAND_LINE m_StandLine;//座標の線上
 	float m_fLength;//対角線の長さ
 	float m_fAngle;//対角線の角度
+	bool m_bOutLine;//アウトライン描画フラグ
 };
 
 #endif

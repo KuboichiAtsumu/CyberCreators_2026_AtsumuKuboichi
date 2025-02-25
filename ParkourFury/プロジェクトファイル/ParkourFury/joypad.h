@@ -103,10 +103,14 @@ private:
 	WORD GetJoypadStick(SHORT sThumbX, SHORT sThumbY, SHORT sDeadZone);
 
 	//======================================
-	// 変数
+	// 定数
 	//======================================
 	const int SPEED_REPEAT = 5;//リピート間隔
 	const int DEADZONE = 1;//デッドゾーン
+
+	//======================================
+	// 変数
+	//======================================
 	static int m_nCntKey;//長押し時間計測
 	XINPUT_STATE m_JoyKeyState;//プレス情報
 	XINPUT_STATE m_JoyKeyStateTrigger;//トリガー情報

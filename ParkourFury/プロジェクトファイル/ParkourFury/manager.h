@@ -42,12 +42,12 @@ public:
 	//======================================
 	static constexpr const char* StageFile[static_cast<int>(CScene::MODE::MODE_MAX)] =
 	{
-		"",//NONE
+		nullptr,//NONE
 		"data/STAGE/GameStage.bin",//TITLE
 		"data/STAGE/TutorialStage.bin",//TUTORIAL
 		"data/STAGE/GameStage.bin",//GAME
-		"",//RESULT
-		"",//RANKING
+		nullptr,//RESULT
+		nullptr,//RANKING
 	};
 
 	//======================================
@@ -55,7 +55,7 @@ public:
 	//======================================
 	static constexpr const char* UIFile[static_cast<int>(CScene::MODE::MODE_MAX)] =
 	{
-		"",//NONE
+		nullptr,//NONE
 		"data/UI/TitleUI.bin",//TITLE
 		"data/UI/TutorialUI.bin",//TUTORIAL
 		"data/UI/GameUI.bin",//GAME

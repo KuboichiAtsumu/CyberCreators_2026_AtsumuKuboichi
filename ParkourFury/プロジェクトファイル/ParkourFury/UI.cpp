@@ -46,16 +46,13 @@ int CUI::m_nAll = 0;
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CUI::CUI(int nPriority) : CObject2D{ nPriority },
-	m_pPrev{ nullptr },
-	m_pNext{ nullptr },
-	m_Type{ TYPE::NONE },
-	m_bEdit{ true }
-
+CUI::CUI(int nPriority) : CObject2D(nPriority),
+	m_pPrev(nullptr),
+	m_pNext(nullptr),
+	m_Type(TYPE::NONE),
+	m_nIdx(m_nAll),
+	m_bEdit(true)
 {
-	//インデックス設定
-	m_nIdx = m_nAll;
-
 	//総数加算
 	m_nAll++;
 }

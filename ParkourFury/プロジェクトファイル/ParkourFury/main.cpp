@@ -114,7 +114,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE /*hInstancePrev*
 	dwFPSLastTime = timeGetTime();
 	unsigned int FPS_TIME_SPACE = 500;
 
-	//メッセージループ
+	//ゲームループ
 	while (1)
 	{
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) != 0)

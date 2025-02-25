@@ -14,18 +14,17 @@
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CFade::CFade()
+CFade::CFade() : 
+	m_pVtxBuff(nullptr),
+	m_state(CFade::STATE::FADE_NONE),
+	m_NextMode(CScene::MODE::MODE_TITLE),
+	m_size(SCREEN_WIDTH, SCREEN_HEIGHT),
+	m_pos(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f),
+	m_rot(0.0f, 0.0f, 0.0f),
+	m_col(1.0f, 1.0f, 1.0f, 0.0f),
+	m_fLength(sqrtf(powf(m_size.x, 2.0f) + powf(m_size.y, 2.0f)) * 0.5f),
+	m_fAngle(atan2f(m_size.x, m_size.y))
 {
-	//メンバ変数初期化
-	m_state = CFade::STATE::FADE_NONE;//現在の状態
-	m_NextMode = CScene::MODE::MODE_TITLE;//次のモード
-	m_size = { SCREEN_WIDTH, SCREEN_HEIGHT };//サイズ
-	m_pos = { SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f };//座標
-	m_rot = { 0.0f, 0.0f, 0.0f };//角度
-	m_col = { 1.0f, 1.0f, 1.0f, 0.0f };//カラー
-	m_fLength = sqrtf(powf(m_size.x, 2.0f) + powf(m_size.y, 2.0f)) * 0.5f;//対角線の長さ
-	m_fAngle = atan2f(m_size.x, m_size.y);//対角線の角度
-	m_pVtxBuff = nullptr;//頂点バッファ
 }
 
 //===========================================================================================================

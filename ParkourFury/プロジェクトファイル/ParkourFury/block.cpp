@@ -42,12 +42,12 @@ HRESULT CBlock::Init()
 	BindModel(pModel->GetAddress(CTag::TAG::BLOCK, static_cast<int>(m_Type)));//設定
 	SetSize();//サイズ設定
 
-	//ローカル変数宣言
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();//デバイスのポインタ
+	//デバイス情報取得
+	LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();
 
 	//シェーダー読込
 	ID3DXEffect* pEffect = GetEffect();
-	if (FAILED(D3DXCreateEffectFromFile(pDevice, "ToonShader.fx", nullptr, nullptr, D3DXSHADER_DEBUG, nullptr, &pEffect, nullptr)))
+	if (FAILED(D3DXCreateEffectFromFile(pDevice, "data/SHADER/ToonShader.fx", nullptr, nullptr, D3DXSHADER_DEBUG, nullptr, &pEffect, nullptr)))
 	{
 		return E_FAIL;
 	}

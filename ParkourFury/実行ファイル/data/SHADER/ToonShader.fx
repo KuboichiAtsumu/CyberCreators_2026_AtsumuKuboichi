@@ -38,7 +38,7 @@ VS_OUTPUT VS_Toon(VS_INPUT input)
     VS_OUTPUT output;
 
     //ワールド空間での法線を計算
-    float3 worldNormal = mul(float4(input.Normal, 0.0), World).xyz;
+    float3 worldNormal = normalize(mul(input.Normal, (float3x3)World));
     output.WorldNormal = normalize(worldNormal);
 
     //モデルの拡大率を設定
@@ -115,7 +115,7 @@ VS_OUTPUT VS_Outline(VS_INPUT input)
 //===========================================================================================================
 float4 PS_Outline(VS_OUTPUT input) : COLOR
 {
-    //白のアウトライン
+    //アウトラインのカラー
     return OutLineColor;
 }
 

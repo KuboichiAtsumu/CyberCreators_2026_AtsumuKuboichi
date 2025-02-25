@@ -195,6 +195,12 @@ void CManager::Uninit()
 		m_pCalculate = nullptr;
 	}
 
+	////Effekseerを終了する。
+	//Effkseer_End();
+
+	////DXライブラリの後始末
+	//DxLib_End();
+
 	//テクスチャ一括管理
 	CTexture::Release();
 

@@ -50,19 +50,25 @@ HRESULT CEdit3D::Init()
 	//編集対象設定
 	m_nTarget = m_nIdx;
 
+	//Xファイル管理のインスタンス取得
+	CXfile* pXfile = CXfile::GetInstance();
+
 	//モデル情報反映
-	CXfile::ModelInfo* pModel = CXfile::GetInstance()->GetAddress(m_tag, m_nType);
+	CXfile::ModelInfo* pModel = pXfile->GetAddress(m_tag, m_nType);
 	if (pModel == nullptr)
 	{
-		pModel = CXfile::GetInstance()->GetAddress(m_tag, 1);
+		pModel = pXfile->GetAddress(m_tag, 1);
 	}
 	BindModel(pModel);
 
+	//テクスチャ管理のインスタンス取得
+	CTexture* pTexManager = CTexture::GetInstance();
+
 	//テクスチャ情報反映
-	LPDIRECT3DTEXTURE9 pTexture = CTexture::GetInstance()->GetAddress(m_tag, m_nType);
+	LPDIRECT3DTEXTURE9 pTexture = pTexManager->GetAddress(m_tag, m_nType);
 	if (pTexture == nullptr)
 	{
-		pTexture = CTexture::GetInstance()->GetAddress(m_tag, 1);
+		pTexture = pTexManager->GetAddress(m_tag, 1);
 	}
 	BindTexture(pTexture);
 

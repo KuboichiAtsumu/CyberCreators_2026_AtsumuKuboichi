@@ -178,6 +178,9 @@ void CMiniGame::TimerCount()
 		//プレイヤーの上にクリアエフェクトを表示
 		CMiniGameClear::Create(CreatePos, pPlayer);
 
+		//SE再生
+		CManager::GetInstance()->GetSound()->Play(CSound::SOUND::MINIGAME_CLEAR);
+
 		//エリアを削除
 		pArea->Uninit();
 

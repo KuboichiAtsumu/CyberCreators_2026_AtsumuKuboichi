@@ -18,7 +18,9 @@ int CInputKeyboard::m_nCntKey = 0;//長押し時間
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CInputKeyboard::CInputKeyboard() : m_aKeyState(), m_aKeyStateTrigger()
+CInputKeyboard::CInputKeyboard() :
+	m_aKeyState(),
+	m_aKeyStateTrigger()
 {
 }
 
@@ -54,8 +56,10 @@ HRESULT CInputKeyboard::Init(HINSTANCE hInstance, HWND hWnd)
 	{
 		return E_FAIL;
 	}
+
 	//キーボードへのアクセス権を獲得
 	m_pDevice->Acquire();
+
 	return S_OK;
 }
 

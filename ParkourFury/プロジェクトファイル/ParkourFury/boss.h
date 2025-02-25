@@ -116,7 +116,7 @@ private:
 	//======================================
 	// 定数
 	//======================================
-	const int SETPOS_TIME = 360;//立ち位置変更の間隔
+	const int SETPOS_TIME = 240;//立ち位置変更の間隔
 	const int ATTACK_TIME = 90;//攻撃間隔
 	const int MAX_LIFE = 20;//最大ライフ
 	const int NUM_ATTACK = 5;//攻撃の数

@@ -18,16 +18,17 @@ int CInputJoypad::m_nCntKey = 0;//長押し時間
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CInputJoypad::CInputJoypad() : m_JoyKeyState(), m_JoyKeyStateTrigger(), m_JoyKeyStateRepeat()
+CInputJoypad::CInputJoypad() : 
+	m_JoyKeyState({}),
+	m_JoyKeyStateTrigger({}),
+	m_JoyKeyStateRepeat({}),
+	m_Stick({}),
+	m_XInput({}),
+	m_aJoypadCurrentTime({}),
+	m_aJoypadExecLastTime({}),
+	m_fLStickAngle(0.0f),
+	m_fRStickAngle(0.0f)
 {
-	//メンバ変数初期化
-	m_Stick = {};//スティックの入力情報
-	m_XInput = {};//コントローラーの状態
-	m_aJoypadCurrentTime = {};//コントローラーの現在の入力時間
-	m_aJoypadExecLastTime = {};//コントローラーの最後にtrueを返した時間
-	m_fLStickAngle = 0.0f;//Lスティック角度
-	m_fRStickAngle = 0.0f;//Rスティック角度
-
 	for (int nCntStickType = 0; nCntStickType < static_cast<int>(CInputJoypad::STICKTYPE::STICKTYPE_MAX); nCntStickType++)
 	{
 		for (int nCntStickAngle = 0; nCntStickAngle < static_cast<int>(CInputJoypad::STICKTYPE::STICKTYPE_MAX); nCntStickAngle++)

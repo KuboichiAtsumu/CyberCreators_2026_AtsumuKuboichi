@@ -15,6 +15,7 @@
 #include "blockmanager.h"
 #include "enemymanager.h"
 #include "bulletmanager.h"
+#include "locus.h"
 
 //===========================================================================================================
 // コンストラクタ
@@ -44,11 +45,23 @@ HRESULT CBullet::Init()
 	BindModel(pModel->GetAddress(CTag::TAG::BULLET, static_cast<int>(m_Type)));//設定
 	SetSize();//サイズ設定
 
+	//アウトラインパラメータ設定
+	SetOutLineFlag(true);//フラグをtrueに設定
+
 	//基底クラス初期化処理
 	if (FAILED(CObjectX::Init()))
 	{
 		return E_FAIL;
 	}
+
+	//アウトラインカラー設定
+	SetOutLineColor({ 1.0f, 1.0f, 1.0f, 1.0f });
+
+	//面のカラー設定
+	CXfile::ModelInfo aModelInfo = GetModelInfo();//モデル情報取得
+	D3DXVECTOR4 Color(1.0f, 1.0f, 0.0f, 1.0f);
+	ID3DXEffect* pEffect = GetEffect();
+	pEffect->SetVector("SurfaceColor", &Color);
 
 	return S_OK;
 }
@@ -70,18 +83,18 @@ void CBullet::Update()
 	//基底クラスの更新処理
 	CObjectX::Update();
 
+	//寿命を減らす
+	m_nLife--;
+
 	//寿命が0の場合
 	if (m_nLife <= 0)
 	{
 		//終了処理
 		Uninit();
 	}
-	//寿命が残っている場合
-	else
-	{
-		//寿命を減らす
-		m_nLife--;
-	}
+
+	//軌跡生成
+	CLocus::Create(GetPos(), GetRot(), GetModelInfo(), 5);
 
 	//座標を更新
 	SetOldPos(GetPos());

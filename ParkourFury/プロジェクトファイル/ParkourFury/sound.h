@@ -39,6 +39,7 @@ public:
 		DOUBLE_JUMP,//ダブルジャンプ
 		SLIDING,//スライディング
 		SELECT,//決定音
+		MINIGAME_CLEAR,//ミニゲームクリア
 
 		SOUND_LABEL_MAX,
 	};
@@ -74,6 +75,7 @@ public:
 		"data/SOUND/SE/DoubleJump.wav", 0, 2.0f,//ダブルジャンプ
 		"data/SOUND/SE/Sliding.wav", 0, 3.0f,//スライディング
 		"data/SOUND/SE/Select.wav", 0, 1.0f,//決定音
+		"data/SOUND/SE/MiniGameClear.wav", 0, 0.7f,//ミニゲームクリア
 	};
 
 	//======================================

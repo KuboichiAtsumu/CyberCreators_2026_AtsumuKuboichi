@@ -15,22 +15,21 @@
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CCamera::CCamera()
+CCamera::CCamera() : 
+	m_posV(FirstPosV),
+	m_posR(0.0f, 70.0f, 0.0f),
+	m_rot(0.0f, 0.0f, 0.0f),
+	m_TargetRot(m_rot),
+	m_State(STATE::NONE),
+	m_nShakeFrame(0),
+	m_nMaxNumShake(0),
+	m_nMoveFrame(0),
+	m_fDistanceMag(1.0f),
+	m_fAddHeight(0.0f),
+	m_fMoveRotY(0.0f),
+	m_fLength(sqrtf(powf(m_posV.y, 2.0f) + powf(m_posV.z, 2.0f))),
+	m_bWork(false)
 {
-	//メンバ変数初期化
-	m_posV = FirstPosV;//視点
-	m_posR = { 0.0f, 70.0f, 0.0f };//注視点
-	m_rot = { 0.0f, 0.0f, 0.0f };//角度
-	m_TargetRot = m_rot;//目標の角度
-	m_State = STATE::NONE;//状態
-	m_nShakeFrame = 0;//揺れるフレーム数
-	m_nMaxNumShake = 0;//揺れの量の最大値
-	m_nMoveFrame = 0;//移動フレーム
-	m_fDistanceMag = 1.0f;//視点と注視点の距離倍率
-	m_fAddHeight = 0.0f;//視点の高さ加算量
-	m_fMoveRotY = 0.0f;//回転量
-	m_fLength = sqrtf(powf(m_posV.y, 2.0f) + powf(m_posV.z, 2.0f));//距離
-	m_bWork = false;//カメラワークフラグ
 }
 
 //===========================================================================================================

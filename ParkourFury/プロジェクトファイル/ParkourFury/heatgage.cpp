@@ -9,6 +9,7 @@
 // ヘッダーインクルード
 //===========================================================================================================
 #include "heatgage.h"
+#include "player.h"
 
 //===========================================================================================================
 // コンストラクタ
@@ -60,7 +61,11 @@ HRESULT CHeatGage::Init()
 	m_MaxSize = size;
 
 	//ゲーム中
-	if (CManager::GetInstance()->GetScene()->GetSceneState() == CScene::SCENE::GAME) SetSize({ 0.0f, size.y });
+	if (CManager::GetInstance()->GetScene()->GetSceneState() == CScene::SCENE::GAME)
+	{
+		//X軸のサイズを0に設定
+		SetSize({ 0.0f, size.y });
+	}
 
 	//頂点座標の設定
 	pVtx[0].pos.x = pos.x;
@@ -78,8 +83,12 @@ HRESULT CHeatGage::Init()
 	pVtx[2].tex = D3DXVECTOR2(0.0f, 1.0f);
 	pVtx[3].tex = D3DXVECTOR2(1.0f, 1.0f);
 
-	//カラー取得
+	//カラー情報取得
 	D3DXCOLOR col = GetColor();
+
+	//透過させる
+	col.a = 0.8f;
+	SetColor(col);
 
 	for (int nCntVtx = 0; nCntVtx < MAX_VER; nCntVtx++)
 	{
@@ -94,7 +103,10 @@ HRESULT CHeatGage::Init()
 	pVtxBuff->Unlock();
 
 	//基底クラス初期化処理
-	if (FAILED(CObject::Init())) return E_FAIL;
+	if (FAILED(CObject::Init()))
+	{
+		return E_FAIL;
+	}
 
 	return S_OK;
 }
@@ -111,7 +123,6 @@ void CHeatGage::Uninit()
 //===========================================================================================================
 // 更新処理
 //===========================================================================================================
-#include "player.h"
 void CHeatGage::Update()
 {
 	//基底クラス更新処理

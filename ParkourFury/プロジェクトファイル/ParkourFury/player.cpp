@@ -382,8 +382,8 @@ void CPlayer::Jump(D3DXVECTOR3& move, float fDiaJump)
 	CCalculate* pCalculate = pManager->GetCalculate();//ŒvŽZˆ—
 
 	//ƒWƒƒƒ“ƒv
-	if ((CManager::GetInstance()->GetKeyboard()->GetTrigger(DIK_SPACE) || 
-		CManager::GetInstance()->GetJoypad()->GetTrigger(CInputJoypad::JOYKEY::JOYKEY_A)) && 
+	if ((pManager->GetKeyboard()->GetTrigger(DIK_SPACE) ||
+		pManager->GetJoypad()->GetTrigger(CInputJoypad::JOYKEY::JOYKEY_A)) &&
 		m_State != STATE::WALL_SLIDE && 
 		m_nCntJump > 0)
 	{

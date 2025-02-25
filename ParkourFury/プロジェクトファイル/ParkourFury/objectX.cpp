@@ -19,11 +19,12 @@ CObjectX::CObjectX(int nPriority) : CObject3D(nPriority),
 	m_vtxMax( 0.0f, 0.0f, 0.0f ),
 	m_Size( 0.0f, 0.0f, 0.0f ),
 	m_Scale( 1.0f, 1.0f, 1.0f ),
-	m_OutLineScale( 1.1f, 1.1f, 1.1f, 0.0f ),
+	m_OutLineScale( 1.1f, 1.1f, 1.1f ),
 	m_OutLineColor( 1.0f, 1.0f, 1.0f, 1.0f ),
 	m_fLength(0.0f),
 	m_fAngle(0.0f),
-	m_StandLine(STAND_LINE::XY)
+	m_StandLine(STAND_LINE::XY),
+	m_bOutLine(false)
 {
 	//モデル情報初期化
 	m_aModelInfo.pMesh = nullptr;
@@ -45,6 +46,21 @@ CObjectX::~CObjectX()
 //===========================================================================================================
 HRESULT CObjectX::Init()
 {
+	//アウトライン描画フラグがtrue
+	if (m_bOutLine)
+	{
+		//デバイス情報取得
+		LPDIRECT3DDEVICE9 pDevice = CManager::GetInstance()->GetRenderer()->GetDevice();
+
+		//シェーダー読込
+		if (FAILED(D3DXCreateEffectFromFile(pDevice, "data/SHADER/OutLine.fx", nullptr, nullptr, D3DXSHADER_DEBUG, nullptr, &m_pEffect, nullptr)))
+		{
+			return E_FAIL;
+		}
+
+
+	}
+
 	//オブジェクト初期化処理
 	if (FAILED(CObject::Init()))
 	{
@@ -72,7 +88,7 @@ void CObjectX::Release()
 	m_aModelInfo.pMesh = nullptr;
 	m_aModelInfo.pBuffMat = nullptr;
 
-	//エフェクト情報を解放
+	//シェーダー情報を解放
 	m_pEffect = nullptr;
 
 	//3Dオブジェクト解放処理
@@ -216,11 +232,12 @@ void CObjectX::Draw()
 //===========================================================================================================
 // シェーダーパラメータ設定
 //===========================================================================================================
-void CObjectX::SetShader(D3DXMATRIX mtxWorld)
+void CObjectX::SetShader(const D3DXMATRIX& mtxWorld)
 {
 	//シェーダー情報が存在しない
 	if (m_pEffect == nullptr)
 	{
+		//処理を抜ける
 		return;
 	}
 

@@ -31,8 +31,6 @@
 #include <string>
 #include <sstream>
 #include <random>
-//#include <EffekseerForDXLib_170e_324b/VC/Effekseer.h>
-//#include <EffekseerForDXLib_170e_324b/VC/EffekseerRendererDX9.h>
 
 //===========================================================================================================
 // マクロ定義
@@ -63,8 +61,6 @@
 #pragma comment(lib,"winmm.lib")//システム時刻取得用
 #pragma comment(lib,"dinput8.lib")//入力処理用
 #pragma comment(lib,"xinput.lib")//ジョイパッド処理用
-//#pragma comment(lib,"Effekseer.lib")
-//#pragma comment(lib,"EffekseerRendererDX9.lib")
 
 //===========================================================================================================
 // 構造体

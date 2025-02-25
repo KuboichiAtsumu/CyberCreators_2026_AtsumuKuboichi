@@ -30,6 +30,13 @@ CBossHPFrame::~CBossHPFrame()
 //===========================================================================================================
 HRESULT CBossHPFrame::Init()
 {
+	//カラー情報取得
+	D3DXCOLOR col = GetColor();
+
+	//透過させる
+	col.a = 0.8f;
+	SetColor(col);
+
 	//基底クラス初期化処理
 	if (FAILED(CUI::Init()))
 	{

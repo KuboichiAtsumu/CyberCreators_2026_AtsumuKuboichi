@@ -223,6 +223,18 @@
     <Filter Include="テキストファイル">
       <UniqueIdentifier>{b789bbf4-3ca2-48a1-8c42-b53f5f7b5487}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Model\Locus">
+      <UniqueIdentifier>{f863af9b-6c6c-4fb9-85a3-6394539cf95e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Model\Locus">
+      <UniqueIdentifier>{3d932f3e-b7e3-408a-938a-20bae9e16c7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\3D\Effekseer">
+      <UniqueIdentifier>{16937a8e-f88b-4c02-8a75-2c2f240bbc81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object\3D\Effekseer">
+      <UniqueIdentifier>{047662cd-c7eb-4408-88f0-43fa46ac103b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp">
@@ -563,6 +575,12 @@
     </ClCompile>
     <ClCompile Include="minigamefailed.cpp">
       <Filter>ソース ファイル\Object\3D\Billboard\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="locus.cpp">
+      <Filter>ソース ファイル\Object\3D\Model\Locus</Filter>
+    </ClCompile>
+    <ClCompile Include="effekseer.cpp">
+      <Filter>ソース ファイル\Object\3D\Effekseer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -905,9 +923,18 @@
     <ClInclude Include="minigamefailed.h">
       <Filter>ヘッダー ファイル\Object\3D\Billboard\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="locus.h">
+      <Filter>ヘッダー ファイル\Object\3D\Model\Locus</Filter>
+    </ClInclude>
+    <ClInclude Include="effekseer.h">
+      <Filter>ヘッダー ファイル\Object\3D\Effekseer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="ToonShader.fx">
+    <FxCompile Include="data\SHADER\ToonShader.fx">
+      <Filter>ソース ファイル\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="data\SHADER\OutLine.fx">
       <Filter>ソース ファイル\Shader</Filter>
     </FxCompile>
   </ItemGroup>

@@ -18,7 +18,10 @@ int CInputMouse::m_nCntKey = 0;//長押し時間
 //===========================================================================================================
 // コンストラクタ
 //===========================================================================================================
-CInputMouse::CInputMouse() : m_MouseStatePress(), m_MouseStateTrigger(), m_MouseStateRepeat()
+CInputMouse::CInputMouse() : 
+	m_MouseStatePress({}),
+	m_MouseStateTrigger({}),
+	m_MouseStateRepeat({})
 {
 }
 
