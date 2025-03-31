@@ -1,0 +1,711 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject">
+      <UniqueIdentifier>{7ac99d8a-b7d9-418b-950a-3d2379c87303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject">
+      <UniqueIdentifier>{be58dcfe-7616-434f-b859-421aea9bb0d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scene">
+      <UniqueIdentifier>{5d081385-f210-4a82-bf58-a7093b779699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{c9076ddf-8d03-4f33-845a-a2acbf23d1b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\Manager">
+      <UniqueIdentifier>{e673d813-a4a5-4f4e-ad9c-3d7793b64199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\Manager">
+      <UniqueIdentifier>{2ff40a11-c4e6-4337-aca5-c46432e79db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\2D">
+      <UniqueIdentifier>{8f1a4d7e-c2ee-4795-bf1b-bfbd563c0bb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\3D">
+      <UniqueIdentifier>{576dbb24-3f16-45e2-9f13-d651de05e456}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\X">
+      <UniqueIdentifier>{683553e7-cdea-4fdd-a701-cf9a09b9d065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\X\Block">
+      <UniqueIdentifier>{87d45eea-406f-422c-9091-efc953a314e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\X\Bullet">
+      <UniqueIdentifier>{eb309d85-d23b-4c28-a0ba-dd3610631d68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\3D\Effect">
+      <UniqueIdentifier>{97724899-4d35-4b2a-8392-af07c919c87c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\X\Enemy">
+      <UniqueIdentifier>{90e927cc-ca35-488d-aa40-601c45ea7299}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\X\Gimmick">
+      <UniqueIdentifier>{e1c2649b-04bd-4198-b21a-95b1b89ded95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\X\Item">
+      <UniqueIdentifier>{ad91048a-70be-4d76-988e-ddb8957b6bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\2D\UI">
+      <UniqueIdentifier>{8557c14e-7fbc-4804-8bbe-dd71896df830}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\2D\UI\TITLE">
+      <UniqueIdentifier>{cce6d63a-0a75-448d-a6fa-332a343d26b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\2D\UI\TUTORIAL">
+      <UniqueIdentifier>{435db371-b123-4f57-92a6-31e8e2d01c5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\2D\UI\GAME">
+      <UniqueIdentifier>{c482bd66-111c-45d8-9e62-39143c81ccba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\2D\UI\RESULT">
+      <UniqueIdentifier>{d6a227dd-8e70-4fbd-8f4c-f3f1b71fd281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\2D\UI\RANKING">
+      <UniqueIdentifier>{462429e4-7cea-4728-9567-7d26617e9dad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Input">
+      <UniqueIdentifier>{6cacabc8-6502-47c7-958c-cf4cfb354707}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\X\edit">
+      <UniqueIdentifier>{e4b09723-2252-4b99-9ccb-1de0ede4ed26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\2D">
+      <UniqueIdentifier>{119af428-ef27-4910-992f-7fd5a3eefda1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\3D">
+      <UniqueIdentifier>{b46b79f2-245a-4429-a961-5c782752b651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\X">
+      <UniqueIdentifier>{3ed5e13b-119d-453b-84bd-df391b192d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\2D\UI">
+      <UniqueIdentifier>{b1e90cba-3d45-4931-bea2-adab9950443c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\2D\UI\TITLE">
+      <UniqueIdentifier>{3fc75e5e-0075-47b3-954b-e592dc8a824c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\2D\UI\TUTORIAL">
+      <UniqueIdentifier>{8ad61a7b-51d7-4195-947c-8fc3698a0837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\2D\UI\GAME">
+      <UniqueIdentifier>{95199aea-1fb4-4308-ad6c-548f072582c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\2D\UI\RESULT">
+      <UniqueIdentifier>{5d039dc4-dcc3-42a0-a928-1cd253f0c47c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\2D\UI\RANKING">
+      <UniqueIdentifier>{78f8441a-803b-4a06-953d-d71830b54ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\X\Block">
+      <UniqueIdentifier>{cd2da475-9d5b-45a8-a4f0-7c1a7dc06192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\X\Bullet">
+      <UniqueIdentifier>{47573f16-345b-44ae-a915-15ff48e34364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\3D\Effect">
+      <UniqueIdentifier>{13949b20-c87e-4ac2-b52a-93678fca481e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\X\Enemy">
+      <UniqueIdentifier>{151b1c75-ead1-458b-b5c7-5297d9f61b72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\X\Gimmick">
+      <UniqueIdentifier>{c7a56ba0-2b25-4102-9f9a-1be93c179eb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\X\Item">
+      <UniqueIdentifier>{5a6262f4-4bdd-43eb-b53f-e5f7190b8ed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Input">
+      <UniqueIdentifier>{3c4fe14f-9ac2-420b-ba16-5631e0cf023b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\X\edit">
+      <UniqueIdentifier>{ef1bbce4-913e-458e-b7ae-6545a93626ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\3D\Billboard">
+      <UniqueIdentifier>{126b6b30-3f31-499d-959f-8dc8dc478933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\3D\Billboard">
+      <UniqueIdentifier>{28240600-eb8c-4b4f-9b44-da30b959d01e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameObject\3D\UI">
+      <UniqueIdentifier>{fa3f58ff-d648-4353-8cbc-8c3ee306e52c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\GameObject\3D\UI">
+      <UniqueIdentifier>{214efe62-8465-4aa6-97d8-50598885757f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="title.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="tutorial.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="result.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ranking.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="edit3D.cpp">
+      <Filter>ソース ファイル\GameObject\X\edit</Filter>
+    </ClCompile>
+    <ClCompile Include="blockmanager.cpp">
+      <Filter>ソース ファイル\GameObject\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="enemymanager.cpp">
+      <Filter>ソース ファイル\GameObject\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="itemmanager.cpp">
+      <Filter>ソース ファイル\GameObject\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="pointmanager.cpp">
+      <Filter>ソース ファイル\GameObject\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="gimmickmanager.cpp">
+      <Filter>ソース ファイル\GameObject\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>ソース ファイル\GameObject\X\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="bat.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="blackghost.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="blueslime.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ghost.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="greenslime.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="purplebat.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="redbat.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="slime.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="whiteghost.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>ソース ファイル\GameObject\X\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="gimmick.cpp">
+      <Filter>ソース ファイル\GameObject\X\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="wallblock.cpp">
+      <Filter>ソース ファイル\GameObject\X\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="barrier.cpp">
+      <Filter>ソース ファイル\GameObject\X\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="boundary.cpp">
+      <Filter>ソース ファイル\GameObject\X\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="battery.cpp">
+      <Filter>ソース ファイル\GameObject\X\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="keyblock.cpp">
+      <Filter>ソース ファイル\GameObject\X\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="moveflloor.cpp">
+      <Filter>ソース ファイル\GameObject\X\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="warphole.cpp">
+      <Filter>ソース ファイル\GameObject\X\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="switchbase.cpp">
+      <Filter>ソース ファイル\GameObject\X\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="switch.cpp">
+      <Filter>ソース ファイル\GameObject\X\Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="heart.cpp">
+      <Filter>ソース ファイル\GameObject\X\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>ソース ファイル\GameObject\X\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="playerbullet.cpp">
+      <Filter>ソース ファイル\GameObject\X\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="clonebullet.cpp">
+      <Filter>ソース ファイル\GameObject\X\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="boundenemybullet.cpp">
+      <Filter>ソース ファイル\GameObject\X\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="launchenemybullet.cpp">
+      <Filter>ソース ファイル\GameObject\X\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="bonus.cpp">
+      <Filter>ソース ファイル\GameObject\X\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="joypad.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="mouse.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="collapseblock.cpp">
+      <Filter>ソース ファイル\GameObject\X\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="midboss.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="launchinvincible.cpp">
+      <Filter>ソース ファイル\GameObject\X\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="boundinvincible.cpp">
+      <Filter>ソース ファイル\GameObject\X\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="boss.cpp">
+      <Filter>ソース ファイル\GameObject\X\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletmanager.cpp">
+      <Filter>ソース ファイル\GameObject\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="target.cpp">
+      <Filter>ソース ファイル\GameObject\3D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="bg.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="precompile.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="operation.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\TUTORIAL</Filter>
+    </ClCompile>
+    <ClCompile Include="heading.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\TUTORIAL</Filter>
+    </ClCompile>
+    <ClCompile Include="gamestart.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\TUTORIAL</Filter>
+    </ClCompile>
+    <ClCompile Include="scorenumber.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="resultheading.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\RESULT</Filter>
+    </ClCompile>
+    <ClCompile Include="scoreback.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\RESULT</Filter>
+    </ClCompile>
+    <ClCompile Include="scoreUI.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\RESULT</Filter>
+    </ClCompile>
+    <ClCompile Include="stagenumber.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="gameUI.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="attention.cpp">
+      <Filter>ソース ファイル\GameObject\2D\UI\GAME</Filter>
+    </ClCompile>
+    <ClCompile Include="objectmanager.cpp">
+      <Filter>ソース ファイル\GameObject\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="manager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="fade.cpp">
+      <Filter>ソース ファイル\GameObject\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="field.cpp">
+      <Filter>ソース ファイル\GameObject\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>ソース ファイル\GameObject\X</Filter>
+    </ClCompile>
+    <ClCompile Include="motion.cpp">
+      <Filter>ソース ファイル\GameObject\X</Filter>
+    </ClCompile>
+    <ClCompile Include="point.cpp">
+      <Filter>ソース ファイル\GameObject\X</Filter>
+    </ClCompile>
+    <ClCompile Include="zone.cpp">
+      <Filter>ソース ファイル\GameObject\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>ソース ファイル\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="objectX.cpp">
+      <Filter>ソース ファイル\GameObject\X</Filter>
+    </ClCompile>
+    <ClCompile Include="object3D.cpp">
+      <Filter>ソース ファイル\GameObject\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="object2D.cpp">
+      <Filter>ソース ファイル\GameObject\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="score.cpp">
+      <Filter>ソース ファイル\GameObject\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="debugproc.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="xfile.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="effect3D.cpp">
+      <Filter>ソース ファイル\GameObject\3D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="shockwave.cpp">
+      <Filter>ソース ファイル\GameObject\3D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="billboard.cpp">
+      <Filter>ソース ファイル\GameObject\3D\Billboard</Filter>
+    </ClCompile>
+    <ClCompile Include="explosion.cpp">
+      <Filter>ソース ファイル\GameObject\3D\Billboard</Filter>
+    </ClCompile>
+    <ClCompile Include="pillar.cpp">
+      <Filter>ソース ファイル\GameObject\3D\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="addscore.cpp">
+      <Filter>ソース ファイル\GameObject\3D\Billboard</Filter>
+    </ClCompile>
+    <ClCompile Include="push.cpp">
+      <Filter>ソース ファイル\GameObject\3D\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="logo.cpp">
+      <Filter>ソース ファイル\GameObject\3D\UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="tutorial.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="edit3D.h">
+      <Filter>ヘッダー ファイル\GameObject\X\edit</Filter>
+    </ClInclude>
+    <ClInclude Include="scorenumber.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="blockmanager.h">
+      <Filter>ヘッダー ファイル\GameObject\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="enemymanager.h">
+      <Filter>ヘッダー ファイル\GameObject\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="itemmanager.h">
+      <Filter>ヘッダー ファイル\GameObject\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="pointmanager.h">
+      <Filter>ヘッダー ファイル\GameObject\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="gimmickmanager.h">
+      <Filter>ヘッダー ファイル\GameObject\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="block.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="bat.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="blueslime.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="blackghost.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ghost.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="greenslime.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="purplebat.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="redbat.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="slime.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="whiteghost.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="gimmick.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="wallblock.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="barrier.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="boundary.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="battery.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="keyblock.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="movefloor.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="warphole.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="switchbase.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="switch.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Gimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="heart.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="playerbullet.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="clonebullet.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="boundenemybullet.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="launchenemybullet.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="bonus.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="joypad.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboard.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="mouse.h">
+      <Filter>ヘッダー ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="collapseblock.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="midboss.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="launchinvincible.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="boundinvincible.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="boss.h">
+      <Filter>ヘッダー ファイル\GameObject\X\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletmanager.h">
+      <Filter>ヘッダー ファイル\GameObject\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="target.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="bg.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="precompile.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="operation.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\TUTORIAL</Filter>
+    </ClInclude>
+    <ClInclude Include="heading.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\TUTORIAL</Filter>
+    </ClInclude>
+    <ClInclude Include="gamestart.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\TUTORIAL</Filter>
+    </ClInclude>
+    <ClInclude Include="resultheading.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\RESULT</Filter>
+    </ClInclude>
+    <ClInclude Include="scoreback.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\RESULT</Filter>
+    </ClInclude>
+    <ClInclude Include="scoreUI.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\RESULT</Filter>
+    </ClInclude>
+    <ClInclude Include="stagenumber.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="gameUI.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="attention.h">
+      <Filter>ヘッダー ファイル\GameObject\2D\UI\GAME</Filter>
+    </ClInclude>
+    <ClInclude Include="objectmanager.h">
+      <Filter>ヘッダー ファイル\GameObject\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="manager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="fade.h">
+      <Filter>ヘッダー ファイル\GameObject\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="field.h">
+      <Filter>ヘッダー ファイル\GameObject\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="motion.h">
+      <Filter>ヘッダー ファイル\GameObject\X</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>ヘッダー ファイル\GameObject\X</Filter>
+    </ClInclude>
+    <ClInclude Include="point.h">
+      <Filter>ヘッダー ファイル\GameObject\X</Filter>
+    </ClInclude>
+    <ClInclude Include="zone.h">
+      <Filter>ヘッダー ファイル\GameObject\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>ヘッダー ファイル\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="object2D.h">
+      <Filter>ヘッダー ファイル\GameObject\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="object3D.h">
+      <Filter>ヘッダー ファイル\GameObject\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="objectX.h">
+      <Filter>ヘッダー ファイル\GameObject\X</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="debugproc.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="sound.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="xfile.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="score.h">
+      <Filter>ヘッダー ファイル\GameObject\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="effect3D.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="billboard.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\Billboard</Filter>
+    </ClInclude>
+    <ClInclude Include="shockwave.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="explosion.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\Billboard</Filter>
+    </ClInclude>
+    <ClInclude Include="pillar.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="addscore.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\Billboard</Filter>
+    </ClInclude>
+    <ClInclude Include="logo.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="push.h">
+      <Filter>ヘッダー ファイル\GameObject\3D\UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

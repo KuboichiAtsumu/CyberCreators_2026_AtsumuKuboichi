@@ -1,0 +1,61 @@
+#====================================================
+# ブロックのXファイル
+#====================================================
+FILE_SET
+
+FILE 0	data/MODEL/BLOCK/cube000.x
+FILE 1	data/MODEL/BLOCK/barrier000.x
+FILE 2	data/MODEL/BLOCK/barrier001.x
+FILE 3	data/MODEL/BLOCK/Battery000.x
+FILE 4	data/MODEL/BLOCK/Lock000.x
+FILE 5	data/MODEL/BLOCK/CollapseBlock000.x
+FILE 6	data/MODEL/BLOCK/tsumiki000.x
+
+END_FILE
+
+#====================================================
+# 敵のXファイル
+#====================================================
+FILE_SET
+
+FILE 0	data/MODEL/ENEMY/Slime000.x
+FILE 1	data/MODEL/ENEMY/Slime001.x
+FILE 2	data/MODEL/ENEMY/Ghost000.x
+FILE 3	data/MODEL/ENEMY/Ghost001.x
+FILE 4	data/MODEL/ENEMY/Bat000.x
+FILE 5	data/MODEL/ENEMY/Bat001.x
+FILE 6	data/MODEL/ENEMY/MidBoss000.x
+FILE 7	data/MODEL/ENEMY/Boss000.x
+
+END_FILE
+
+#====================================================
+# アイテムのXファイル
+#====================================================
+FILE_SET
+
+FILE 0	data/MODEL/ITEM/life000.x
+FILE 1	data/MODEL/ITEM/Bonus000.x
+
+END_FILE
+
+#====================================================
+# ポイントのXファイル
+#====================================================
+FILE_SET
+
+FILE 0	data/MODEL/POINT/point000.x
+
+END_FILE
+
+#====================================================
+# ギミックのXファイル
+#====================================================
+FILE_SET
+
+FILE 0	data/MODEL/GIMMICK/MovingFloor000.x
+FILE 1	data/MODEL/GIMMICK/Warp000.x
+FILE 2	data/MODEL/GIMMICK/SwitchBase000.x
+FILE 3	data/MODEL/GIMMICK/Switch000.x
+
+END_FILE
